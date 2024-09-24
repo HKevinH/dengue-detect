@@ -1,4 +1,3 @@
-# Dengue Detect
 
 # 🧬 Dengue Detect
 
