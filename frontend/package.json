@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.5.1",
     "antd": "^5.21.4",
     "dengue-detect-monorepo": "file:..",
     "react": "^18.3.1",

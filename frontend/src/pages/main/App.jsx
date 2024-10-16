@@ -1,5 +1,7 @@
+import { RouterLocation } from "../../router/Router";
+
 function App() {
-  return <>asda</>;
+  return <RouterLocation />;
 }
 
 export default App;
