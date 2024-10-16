@@ -1,2 +1,4 @@
-# Simulación de base de datos en memoria
-fake_db = []
+# app/db/base.py
+
+# Esta puede ser una definiciÃ³n de base de datos falsa para pruebas
+fake_db = {}
