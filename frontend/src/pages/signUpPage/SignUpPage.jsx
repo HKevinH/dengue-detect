@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { Tabs, Row, Col, Layout, Typography } from "antd";
 import { FormLogin, FormRegister } from "./Forms";
 

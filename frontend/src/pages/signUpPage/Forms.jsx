@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 import { Form, Input, Button } from "antd";
 
@@ -70,7 +71,10 @@ export const FormLogin = ({ onFinish }) => {
           },
         ]}
       >
-        <Input prefix={<MailOutlined />} placeholder="Ej:" />
+        <Input
+          prefix={<MailOutlined />}
+          placeholder="Ej: juangomez@gmail.com"
+        />
       </Form.Item>
       <Form.Item
         name="password"
