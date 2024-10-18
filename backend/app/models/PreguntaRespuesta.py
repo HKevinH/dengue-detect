@@ -12,10 +12,10 @@ class Item(Base):
     __tablename__ = "PreguntaRespuesta"
 
     id_pregunta_respuesta = Column(Integer, primary_key=True, index=True)
-    id_pregunta = Column(Integer, primary_key=False, index=True)
-    id_respuesta = Column(Integer, primary_key=False, index=True)
-    respuesta = Column(String(255), nullable=False)
-    fecha_asociacion = Column(String(255), nullable=True)
+    id_pregunta = Column(Integer, ForeignKey('Pregunta.id'))
+    id_respuesta = Column(Integer, ForeignKey('Respuesta.id'))
+    respuesta = Column(Text, nullable=False)
+    fecha_asociacion = Column(DateTime, server_default = func.now())
     
 
 async def init_db():
