@@ -12,9 +12,9 @@ class Item(Base):
     __tablename__ = "Pregunta"
 
     id_pregunta = Column(Integer, primary_key=True, index=True)
-    id_usuario = Column(Integer, primary_key=False, index=True)
-    pregunta = Column(String(255), nullable=False)
-    fecha_creacion = Column(String(255), nullable=True)
+    id_usuario = Column(Integer, ForeignKey('Usuario.id'))
+    pregunta = Column(Text, nullable=False)
+    fecha_creacion = Column(DateTime, server_default = func.now())
     categoria = Column(String(255), nullable=False)
     estado = Column(String(255), nullable=False)
     
