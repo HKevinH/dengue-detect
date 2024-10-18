@@ -7,7 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
-class Item(Base):
+class Usuario(Base):
     __tablename__ = "items"
 
     id_usuario = Column(Integer, primary_key=True, index=True)
