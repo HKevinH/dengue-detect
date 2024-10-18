@@ -15,7 +15,7 @@ class Usuario(Base):
     email = Column(String(255), unique=True, nullable=False)
     contraseña = Column(String(255), nullable=False)
     estado_cuenta = Column(String(50), nullable=False) #(activo, inactivo, etc)
-    rol = Column(String(50), nullable=False)
+    rol = Column(String(50), nullable=False) #(paciente, médico, administrador)
     
 
 async def init_db():
