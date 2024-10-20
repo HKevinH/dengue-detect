@@ -1,4 +1,6 @@
-import Message from './Message';
+/* eslint-disable react/prop-types */
+import { message } from "antd";
+import Message from "./Message";
 
 const MessageList = ({ messages }) => {
   return (
