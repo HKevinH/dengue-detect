@@ -20,7 +20,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: mysql+aiomysql://youruser:yourpassword@db:3306/mydatabase
+      DATABASE_URL: mysql+aiomysql://youruser:yourpassword@db:3306/dengueDetectDb
 
   frontend:
     build:
