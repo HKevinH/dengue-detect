@@ -50,4 +50,5 @@
     border-top: 1px solid #333;
     color: #ffffff;
     background-color: #111827;
+    overflow-x: hidden;
 }

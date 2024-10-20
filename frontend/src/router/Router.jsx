@@ -9,8 +9,9 @@ export const RouterLocation = () => {
       <Routes>
         <Route path="/register" element={<SignUpPage login={false} />} />
         <Route path="/login" element={<SignUpPage login={true} />} />
-        <Route path="/chat" element={<ChatPage />} />
-        <Route path="/panel" element={<UserPanel />} />
+        <Route path="/panel" element={<UserPanel />}>
+          <Route path="chat" element={<ChatPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

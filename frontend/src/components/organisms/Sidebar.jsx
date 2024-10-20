@@ -47,29 +47,15 @@ const menus = [
     key: "6",
     icon: <LogoutOutlined />,
     text: "Bot",
-    navigate: "/chat",
-    onClick: () => console.log("Bot"),
+    navigate: "/panel/chat",
   },
 ];
 
 export const Sidebar = () => {
   const navigate = useNavigate();
-
   return (
     <Sider className="sidebar" breakpoint="lg" collapsedWidth="80">
-      <div
-        className="logo-sidebar"
-        style={{
-          color: "#fff",
-          textAlign: "center",
-          padding: "30px 0",
-          fontSize: "20px",
-          fontWeight: "bold",
-          backgroundColor: "#111827",
-        }}
-      >
-        DengueDetect
-      </div>
+      <div className="logo-sidebar">DengueDetect</div>
 
       <Menu
         theme="dark"
@@ -92,13 +78,6 @@ export const Sidebar = () => {
               } else {
                 menu.onClick();
               }
-            }}
-            style={{
-              color: "#ffffff",
-              borderRadius: "8px",
-              margin: "5px 10px",
-              padding: "12px",
-              transition: "background 0.3s, color 0.3s",
             }}
           >
             {menu.text}
