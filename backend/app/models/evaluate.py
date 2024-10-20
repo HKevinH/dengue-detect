@@ -10,6 +10,7 @@ class Evaluate(Base):
     id_evaluacion= Column(Integer, primary_key=True, index=True)
     id_usuario = Column(Integer, ForeignKey('usuario.id'))
     id_respuesta = Column(Integer, ForeignKey('respuestas.id'))
+    id_zone =  Column(Integer, ForeignKey('zona.id'))
     fecha_evaluacion = Column(DateTime, server_default=func.now())
     resultado = resultado = Column(Text, nullable=False)
     estado_evaluacion = Column(String(50), nullable=False)
@@ -18,3 +19,4 @@ class Evaluate(Base):
     # Relación con Usuario y Respuesta
     user = relationship("User", back_populates="evaluations")
     response = relationship("Solution")  # Relación con la tabla respuestas
+    zone = relationship("Zones") # Relacion con la tabla Zonas
