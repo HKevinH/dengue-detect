@@ -1,6 +1,8 @@
-from fastapi import APIRouter, HTTPException
-from app.schemas.item_schema import ItemCreate, Item
-from app.services.item_service import create_item, get_item_by_id
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
+from app.schemas.user_schema import UserCreate, UserResponse
+from app.services.UserService import create_user
+from app.db.session import get_db
 
 router = APIRouter()
 
@@ -13,13 +15,13 @@ router = APIRouter()
 # Actualizar un item
 # Importante no meter logica de negocio en los endpoints
 
-@router.post("/items/", response_model=Item)
-def create_item_view(item: ItemCreate):
-    return create_item(item)
 
-@router.get("/items/{item_id}", response_model=Item)
-def get_item_view(item_id: int):
-    item = get_item_by_id(item_id)
-    if not item:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return item
+@router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+def register_user(user_create: UserCreate, db: Session = Depends(get_db)):
+    user = create_user(db, user_create)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="El correo ya está en uso"
+        )
+    return user

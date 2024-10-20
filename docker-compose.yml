@@ -3,9 +3,7 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: dengue
-      MYSQL_USER: root
-      MYSQL_PASSWORD: yourpassword
-      MYSQL_DATABASE: mydatabase
+      MYSQL_DATABASE: dengueDetectDb
     ports:
       - "3306:3306"
     volumes:

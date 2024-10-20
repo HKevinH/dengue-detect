@@ -1,12 +1,14 @@
 FROM python:3.9-slim
 
-WORKDIR /app
+WORKDIR /backend
 
-COPY ./app /app
+COPY ./ /backend/
 
-COPY requirements.txt /app/requirements.txt
+COPY ./app /app/
 
-RUN pip install --no-cache-dir -r /app/requirements.txt
+COPY requirements.txt /backend/requirements.txt
+
+RUN pip install --no-cache-dir -r /backend/requirements.txt
 
 EXPOSE 8000
 

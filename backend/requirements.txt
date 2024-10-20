@@ -3,3 +3,6 @@ uvicorn
 pydantic
 sqlalchemy
 aiomysql
+PyJWT
+passlib
+email-validator
