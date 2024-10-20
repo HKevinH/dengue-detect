@@ -1,67 +1,19 @@
-import { Layout, Row, Col, Button, Menu } from "antd";
-import {
-  BellOutlined,
-  UserOutlined,
-  HomeOutlined,
-  SettingOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons";
+import { Layout, Row, Col, Button } from "antd";
+
 import ProfileCard from "../organisms/ProfileCard";
 import NotificationCard from "../organisms/NotificationCard";
 import LastQuestionnaireCard from "../organisms/LastQuestionnaireCard";
 import PanelTitle from "../atoms/PanelTitle";
 import PanelText from "../atoms/PanelText";
+import { Sidebar } from "../organisms/Sidebar";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 const UserPanelTemplate = () => (
   <Layout style={{ minHeight: "100vh" }}>
-    <Sider
-      style={{
-        backgroundColor: "#0B8043",
-      }}
-      breakpoint="lg"
-      collapsedWidth="0"
-    >
-      <div
-        style={{
-          color: "#fff",
-          textAlign: "center",
-          padding: "20px",
-          fontSize: "20px",
-          fontWeight: "bold",
-        }}
-      >
-        Mi Panel
-      </div>
-      <Menu
-        theme="dark"
-        mode="inline"
-        defaultSelectedKeys={["1"]}
-        style={{
-          backgroundColor: "#0B8043",
-        }}
-      >
-        <Menu.Item key="1" icon={<HomeOutlined />}>
-          Inicio
-        </Menu.Item>
-        <Menu.Item key="2" icon={<UserOutlined />}>
-          Perfil
-        </Menu.Item>
-        <Menu.Item key="3" icon={<BellOutlined />}>
-          Notificaciones
-        </Menu.Item>
-        <Menu.Item key="4" icon={<SettingOutlined />}>
-          Configuración
-        </Menu.Item>
-        <Menu.Item key="5" icon={<LogoutOutlined />}>
-          Cerrar Sesión
-        </Menu.Item>
-      </Menu>
-    </Sider>
+    <Sidebar />
 
-    {/* Contenido principal */}
-    <Layout>
+    <Layout style={{ marginLeft: "200px" }}>
       <Header
         style={{
           background: "#fff",

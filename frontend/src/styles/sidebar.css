@@ -1,0 +1,53 @@
+/* Estilo general del sidebar */
+.sidebar {
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    overflow: auto;
+}
+
+/* Logo del Sidebar */
+.logo-sidebar {
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #111827;
+}
+
+.ant-menu-dark,
+.ant-menu-dark .ant-menu-inline {
+    background-color: #1f2937;
+}
+
+.ant-menu-item {
+    color: #ffffff;
+    border-radius: 8px;
+    margin: 5px 10px;
+    padding: 12px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.ant-menu-item:hover {
+    background-color: #374151;
+}
+
+.ant-menu-item-selected {
+    background-color: #4b5563 !important;
+    color: #ffffff !important;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+    color: #ffffff;
+    background-color: #111827;
+}

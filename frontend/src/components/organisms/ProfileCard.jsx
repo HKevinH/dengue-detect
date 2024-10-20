@@ -3,11 +3,11 @@ import { UserOutlined } from "@ant-design/icons";
 import PanelTitle from "../atoms/PanelTitle";
 import PanelText from "../atoms/PanelText";
 import PrimaryButton from "../atoms/Button";
-import "./index.css";
+import "../../styles/profile-card.css";
 
 const ProfileCard = () => (
   <Card bordered={false} className="profile-card">
-    <UserOutlined style={{ fontSize: "24px", color: "#0B8043" }} />
+    <UserOutlined style={{ fontSize: "24px", color: "#00000" }} />
     <PanelTitle>Perfil</PanelTitle>
     <PanelText>Nombre: María García</PanelText>
     <br />
