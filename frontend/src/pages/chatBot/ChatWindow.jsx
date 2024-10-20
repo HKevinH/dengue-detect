@@ -39,7 +39,7 @@ const ChatWindow = () => {
   }, [messages]);
 
   return (
-    <Layout style={{ minHeight: "100vh", overflow: "hidden" }}>
+    <Layout>
       <Content>
         <Row justify="center" align="middle" style={{ minHeight: "100vh" }}>
           <Col xs={24} sm={16} md={12} lg={8}>

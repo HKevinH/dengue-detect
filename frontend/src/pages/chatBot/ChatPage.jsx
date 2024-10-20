@@ -1,10 +1,11 @@
+import { Layout } from "antd";
 import ChatWindow from "./ChatWindow";
 
 const ChatPage = () => {
   return (
-    <div className="chat-page">
+    <Layout>
       <ChatWindow />
-    </div>
+    </Layout>
   );
 };
 
