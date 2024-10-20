@@ -6,3 +6,4 @@ aiomysql
 PyJWT
 passlib
 email-validator
+bcrypt

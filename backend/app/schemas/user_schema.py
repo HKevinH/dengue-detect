@@ -8,10 +8,11 @@ class UserCreate(BaseModel):
     
     
 class UserResponse(BaseModel):
-    id_user: int
+    id: int
     email: EmailStr
     name: str
     state_account: str
     role: str
+    online: bool
     class Config:
         from_attributes = True
