@@ -3,14 +3,10 @@ import MapLayer from "../molecules/MapLayer";
 import MapMarker from "../atoms/MapMarker";
 import "leaflet/dist/leaflet.css";
 import { useMapHook } from "../../hooks/useMap";
-import { useEffect } from "react";
 
 const MapComponent = () => {
-  const { position, getGeoData } = useMapHook();
-  useEffect(() => {
-    const res = getGeoData();
-    console.log(res);
-  }, [getGeoData]);
+  const { position } = useMapHook();
+
   return (
     <MapContainer
       center={position}

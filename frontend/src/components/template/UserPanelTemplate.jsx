@@ -1,29 +1,41 @@
-import { Layout } from "antd";
+import { Avatar, Layout } from "antd";
 
 import PanelText from "../atoms/PanelText";
 import { Sidebar } from "../organisms/Sidebar";
 import { Outlet } from "react-router";
+import { useState } from "react";
+import UserAvatar from "../organisms/UserAvatar";
 
 const { Header, Content } = Layout;
 
 const UserPanelTemplate = () => {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
     <Layout
-      style={{ minHeight: window.innerHeight * 0.9, overflowY: "hidden" }}
+      style={{
+        minHeight: window.innerHeight * 0.9,
+        overflowY: "hidden",
+      }}
     >
-      <Sidebar />
+      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
-      <Layout style={{ marginLeft: "200px" }}>
+      <Layout
+        style={{
+          marginLeft: collapsed ? "100px" : "250px",
+          transition: "margin-left 0.3s ease",
+        }}
+      >
         <Header
           style={{
-            background: "#fff",
-            padding: "0 20px",
+            backgroundColor: "#fff",
+            borderRadius: "0 10px 10px 0",
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
           }}
         >
-          <PanelText strong>Hola, María García</PanelText>
+          <UserAvatar />
         </Header>
 
         <Content

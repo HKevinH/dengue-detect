@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   HeatMapOutlined,
   UserOutlined,
@@ -6,9 +7,10 @@ import {
   LogoutOutlined,
   AppstoreOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Tooltip } from "antd";
 import "../../styles/sidebar.css";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const { Sider } = Layout;
 
@@ -50,11 +52,22 @@ const menus = [
   },
 ];
 
-export const Sidebar = () => {
+export const Sidebar = ({ collapsed, setCollapsed }) => {
   const navigate = useNavigate();
+
   return (
-    <Sider className="sidebar" breakpoint="lg" collapsedWidth="80">
-      <div className="logo-sidebar">DengueDetect</div>
+    <Sider
+      className="sidebar"
+      collapsible
+      collapsed={collapsed}
+      onCollapse={() => setCollapsed(!collapsed)}
+      breakpoint="lg"
+      collapsedWidth="100"
+      width={250}
+    >
+      <div className="logo-sidebar" style={{ padding: "20px", color: "#fff" }}>
+        {collapsed ? "DD" : "DengueDetect"}
+      </div>
 
       <Menu
         theme="dark"
@@ -70,21 +83,25 @@ export const Sidebar = () => {
           <Menu.Item
             key={menu.key}
             className="sidebar-menu-item"
-            icon={menu.icon}
+            icon={
+              <Tooltip title={collapsed ? menu.text : ""} placement="right">
+                {menu.icon}
+              </Tooltip>
+            }
             onClick={() => {
               if (menu.navigate) {
                 navigate(menu.navigate);
-              } else {
+              } else if (menu.onClick) {
                 menu.onClick();
               }
             }}
           >
-            {menu.text}
+            {!collapsed && menu.text}
           </Menu.Item>
         ))}
       </Menu>
 
-      <div className="sidebar-footer">Account</div>
+      <div className="sidebar-footer">{!collapsed && "Account"}</div>
     </Sider>
   );
 };

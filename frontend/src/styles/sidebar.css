@@ -1,6 +1,8 @@
 /* Estilo general del sidebar */
 .sidebar {
-    min-height: 100vh;
+    margin: 10px 10px 10px 10px;
+    border-radius: 20px;
+    min-height: 90vh;
     position: fixed;
     left: 0;
     top: 0;
@@ -19,31 +21,34 @@
     background-color: #111827;
 }
 
-.ant-menu-dark,
+.sidebar-menu-item .ant-menu-dark,
 .ant-menu-dark .ant-menu-inline {
     background-color: #1f2937;
 }
 
-.ant-menu-item {
+.sidebar-menu-item.ant-menu-item {
     color: #ffffff;
+    display: flex;
+    justify-content: center;
     border-radius: 8px;
     margin: 5px 10px;
     padding: 12px;
     transition: background 0.3s, color 0.3s;
 }
 
-.ant-menu-item:hover {
+.sidebar-menu-item.ant-menu-item:hover {
     background-color: #374151;
 }
 
-.ant-menu-item-selected {
+.sidebar-menu-item.ant-menu-item-selected {
     background-color: #4b5563 !important;
     color: #ffffff !important;
 }
 
 .sidebar-footer {
     position: absolute;
-    bottom: 20px;
+    bottom: 80px;
+    padding: 20px;
     width: 100%;
     text-align: center;
     padding: 10px 0;
