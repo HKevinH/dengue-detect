@@ -1,5 +1,5 @@
 import {
-  BellOutlined,
+  HeatMapOutlined,
   UserOutlined,
   HomeOutlined,
   SettingOutlined,
@@ -33,15 +33,14 @@ const menus = [
   },
   {
     key: "4",
-    icon: <BellOutlined />,
-    text: "Products",
-    onClick: () => console.log("Products"),
+    icon: <HeatMapOutlined />,
+    text: "Mapa",
+    navigate: "/panel/zones",
   },
   {
     key: "5",
     icon: <SettingOutlined />,
     text: "Settings",
-    onClick: () => console.log("Settings"),
   },
   {
     key: "6",

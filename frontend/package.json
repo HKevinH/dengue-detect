@@ -14,8 +14,10 @@
     "antd": "^5.21.4",
     "axios": "^1.7.7",
     "dengue-detect-monorepo": "file:..",
+    "leaflet": "^1.9.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
     "react-router": "^6.27.0",
     "react-router-dom": "^6.27.0",
     "zustand": "^5.0.0"

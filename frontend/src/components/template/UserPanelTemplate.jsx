@@ -1,4 +1,4 @@
-import { Layout, Button } from "antd";
+import { Layout } from "antd";
 
 import PanelText from "../atoms/PanelText";
 import { Sidebar } from "../organisms/Sidebar";
@@ -8,7 +8,9 @@ const { Header, Content } = Layout;
 
 const UserPanelTemplate = () => {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout
+      style={{ minHeight: window.innerHeight * 0.9, overflowY: "hidden" }}
+    >
       <Sidebar />
 
       <Layout style={{ marginLeft: "200px" }}>
@@ -17,20 +19,18 @@ const UserPanelTemplate = () => {
             background: "#fff",
             padding: "0 20px",
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
             alignItems: "center",
           }}
         >
-          <Button type="link" style={{ color: "#0B8043" }}>
-            &larr; Volver
-          </Button>
           <PanelText strong>Hola, María García</PanelText>
         </Header>
 
         <Content
           style={{
-            padding: "20px",
-            backgroundColor: "#fff",
+            padding: "10px",
+            overflowX: "hidden",
+            overflowY: "auto",
           }}
         >
           <Outlet />
