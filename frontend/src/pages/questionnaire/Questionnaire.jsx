@@ -88,7 +88,7 @@ export const Questionnaire = () => {
           </Form.Item>
         </Form>
       ) : (
-        <h2>¡Gracias por completar el cuestionario, {usuario.username}!</h2>
+        <h2>¡Gracias por completar el cuestionario!</h2>
       )}
     </Layout>
   );
