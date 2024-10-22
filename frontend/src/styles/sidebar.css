@@ -1,59 +1,57 @@
-/* Estilo general del sidebar */
 .sidebar {
-    margin: 10px 10px 10px 10px;
-    border-radius: 20px;
-    min-height: 90vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
-    overflow: auto;
+  margin: 10px 10px 10px 10px;
+  border-radius: 20px !important;
+  min-height: 90vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  overflow: auto;
 }
 
-/* Logo del Sidebar */
 .logo-sidebar {
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-    background-color: #111827;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #111827;
 }
 
 .sidebar-menu-item .ant-menu-dark,
 .ant-menu-dark .ant-menu-inline {
-    background-color: #1f2937;
+  background-color: #1f2937;
 }
 
 .sidebar-menu-item.ant-menu-item {
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    border-radius: 8px;
-    margin: 5px 10px;
-    padding: 12px;
-    transition: background 0.3s, color 0.3s;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+  margin: 5px 10px;
+  padding: 12px;
+  transition: background 0.3s, color 0.3s;
 }
 
 .sidebar-menu-item.ant-menu-item:hover {
-    background-color: #374151;
+  background-color: #374151;
 }
 
 .sidebar-menu-item.ant-menu-item-selected {
-    background-color: #4b5563 !important;
-    color: #ffffff !important;
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
 }
 
 .sidebar-footer {
-    position: absolute;
-    bottom: 80px;
-    padding: 20px;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    border-top: 1px solid #333;
-    color: #ffffff;
-    background-color: #111827;
-    overflow-x: hidden;
+  position: absolute;
+  bottom: 80px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid #333;
+  color: #ffffff;
+  background-color: #111827;
+  overflow-x: hidden;
 }

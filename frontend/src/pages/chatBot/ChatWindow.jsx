@@ -22,9 +22,22 @@ const ChatWindow = () => {
       setMessages([...messages, { text: inputValue, sender: "user" }]);
       setInputValue("");
       setTimeout(() => {
+        let botResponse = "Respuesta del chatbot";
+
+        if (inputValue.toLowerCase().includes("dengue")) {
+          botResponse =
+            "Recomendaciones para el dengue:\n1. Bebe mucha agua.\n2. Descansa.\n3. Consulta a un médico si los síntomas empeoran.";
+        } else if (inputValue.toLowerCase().includes("muy mal")) {
+          botResponse =
+            "Siento que te sientas así. Aquí tienes algunas recomendaciones:\n1. Mantén la calma.\n2. Si los síntomas son graves, busca ayuda médica inmediata.\n3. Intenta descansar y mantente hidratado.";
+        }
+
         setMessages((prevMessages) => [
           ...prevMessages,
-          { text: "Respuesta del chatbot", sender: "bot" },
+          {
+            text: botResponse,
+            sender: "bot",
+          },
         ]);
       }, 1000);
     }
