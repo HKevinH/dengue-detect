@@ -15,7 +15,6 @@ export const RouterLocation = () => {
         <Route path="/login" element={<SignUpPage login={true} />} />
         <Route path="/panel" element={<UserPanel />}>
           <Route path="zones" element={<Zones />} />
-
           <Route path="dashboard" element={<Zones />} />
           <Route path="settings" element={<Settings />} />
           <Route path="results" element={<Results />} />
