@@ -4,6 +4,14 @@ from app.schemas.user_schema import UserCreate
 from passlib.context import CryptContext
 from sqlalchemy.future import select
 
+import jwt
+from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import HTTPException, status
+
+
+SECRET_KEY = "R2VzaXRpb24gZGUgcHJveWVjdG9zIFRJIC0gVVNDIC0gQml0QnVpbGRlcnMgLSBEZXRlbmNpb24gZGVsIGRlbmd1ZQ=="
+ALGORITHM = "HS256"
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 async def create_user(db: Session, user_create: UserCreate):
@@ -24,3 +32,15 @@ async def create_user(db: Session, user_create: UserCreate):
     await db.refresh(new_user)
 
     return new_user
+
+async def authenticate_user(db: AsyncSession, email: str, password: str):
+    result = await db.execute(select(User).where(User.email == email))
+    user = result.scalars().first()
+
+    if not user or not pwd_context.verify(password, user.password):
+        return None
+    return user
+
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.schemas.user_schema import UserCreate, UserResponse
-from app.services.userService import create_user
+from app.schemas.user_schema import UserCreate, UserResponse, UserLogin, LoginResponse
+from app.services.userService import create_user, authenticate_user, create_access_token
 from app.db.session import get_db
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
@@ -35,6 +35,13 @@ async def register_user(user_create: UserCreate, db: AsyncSession = Depends(get_
     return user
 
 
-@router.get("/login")
-async def login_user():
-    return {"message": "Login User"}
+@router.post("/login", response_model=LoginResponse)
+async def login_user(user_login: UserLogin, db: AsyncSession= Depends(get_db)):
+    user = await authenticate_user(db, user_login.email, user_login.password)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            details='El correo o contreseña son incorrectos'
+        )
+    access_token = create_access_token(date={"sub": user.email})
+    return {"access_token": access_token, "token_type": "bearer"}
