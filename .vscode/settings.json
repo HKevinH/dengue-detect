@@ -1,3 +1,4 @@
 {
-  "cSpell.enableFiletypes": ["!javascriptreact", "!typescriptreact"]
+  "cSpell.enableFiletypes": ["!javascriptreact", "!typescriptreact"],
+  "cSpell.enabled": false
 }
