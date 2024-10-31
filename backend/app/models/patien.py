@@ -1,4 +1,19 @@
+# app/schemas/patient.py
+
 from pydantic import BaseModel
+
+# Definir columnas
+symptom_columns = [
+    'fiebre', 'cefalea', 'dolor_retro_ocular', 'malgias', 'artralgia', 'erupcion',
+    'dolor_abdominal', 'vomito', 'diarrea', 'somnolencia', 'hipotension', 'hepatomegalia',
+    'hem_mucosa', 'hipotermia', 'aum_hemato', 'caida_plaquetas', 'acumulacion_liquidos',
+    'extravasacion', 'hemorragia', 'choque', 'daño_organo'
+]
+
+categorical_columns = [
+    'ciudad_residencia', 'dpto_residencia', 'nombre_municipio_procedencia',
+    'sexo', 'tipo_seguridad_social', 'etnia', 'estrato', 'nacionalidad'
+]
 
 class PatientData(BaseModel):
     # Síntomas
@@ -23,6 +38,7 @@ class PatientData(BaseModel):
     hemorragia: int
     choque: int
     daño_organo: int
+
     # Datos categóricos
     ciudad_residencia: str
     dpto_residencia: str

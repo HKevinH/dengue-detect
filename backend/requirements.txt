@@ -8,3 +8,5 @@ passlib
 email-validator
 bcrypt
 pytest
+torch
+pandas
