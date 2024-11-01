@@ -3,7 +3,7 @@ import { get, post } from "./axios";
 const registerByUser = async (user) => {
   try {
     const response = await post("register", user);
-    return response.data;
+    return response;
   } catch (error) {
     console.error(error);
   }

@@ -32,16 +32,26 @@ async def register_user(user_create: UserCreate, db: AsyncSession = Depends(get_
         
     user = await create_user(db, user_create)
     await db.commit()
-    return user
-
-
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Ocurrió un error al crear el usuario"
+        )
+    else :
+        raise HTTPException(
+            status_code=status.HTTP_201_CREATED,
+            detail="Usuario creado exitosamente",
+            data=user
+        )
+        
+        
 @router.post("/login", response_model=LoginResponse)
 async def login_user(user_login: UserLogin, db: AsyncSession= Depends(get_db)):
     user = await authenticate_user(db, user_login.email, user_login.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            details='El correo o contreseña son incorrectos'
+            detail='El correo o contreseña son incorrectos'
         )
-    access_token = create_access_token(date={"sub": user.email})
+    access_token = create_access_token(data={"sub": user.email})
     return {"access_token": access_token, "token_type": "bearer"}

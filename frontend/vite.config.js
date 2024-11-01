@@ -8,15 +8,10 @@ export default defineConfig({
     host: "0.0.0.0",
     port: 5173,
     proxy: {
-      "/apiV2/": {
-        target: "https://datos.cali.gov.co/dataset",
+      "/api/v1": {
+        target: "http://localhost:8000/api/v1/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api1/, ""),
-      },
-      "/api": {
-        target: "https://otroservicio.com",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api2/, ""),
       },
     },
   },

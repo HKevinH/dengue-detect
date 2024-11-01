@@ -14,4 +14,5 @@ class Zone(Base):
     update_date = Column(DateTime, server_default=func.now())
     
     #Relacion con evaluacion
-    evaluations = relationship("Evaluate", back_populates="user")
+    evaluations = relationship("Evaluate", back_populates="zone")
+    

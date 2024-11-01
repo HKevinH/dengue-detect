@@ -19,4 +19,4 @@ class Evaluate(Base):
     # Relación con Usuario y Respuesta
     user = relationship("User", back_populates="evaluations")
     response = relationship("Solution")  # Relación con la tabla respuestas
-    zone = relationship("Zones") # Relacion con la tabla Zonas
+    zone = relationship("Zone", back_populates="evaluations")

@@ -2,21 +2,30 @@
 import { Tabs, Row, Col, Layout, Typography } from "antd";
 import { FormLogin, FormRegister } from "./Forms";
 import useUsers from "../../hooks/useUsers";
+import { AlertMessage } from "../../components/atoms/AlertMessage";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const { TabPane } = Tabs;
 const { Content } = Layout;
 const { Title } = Typography;
 
 const SignUpPage = ({ login }) => {
-  const { register } = useUsers();
+  const navigate = useNavigate();
+  const { register, message, currentSession, login } = useUsers();
   const onFinish = async (values) => {
     if (login) {
-      console.log("Login", values);
+      await login(values);
     } else {
       await register(values);
     }
   };
 
+  useEffect(() => {
+    if (currentSession) {
+      navigate("/panel");
+    }
+  }, [currentSession]);
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Content>
@@ -48,6 +57,13 @@ const SignUpPage = ({ login }) => {
           </Col>
         </Row>
       </Content>
+
+      {message && (
+        <AlertMessage
+          message={message}
+          type={message.includes("Error") ? "error" : "success"}
+        />
+      )}
     </Layout>
   );
 };
