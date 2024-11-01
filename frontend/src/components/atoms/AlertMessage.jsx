@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Alert } from "antd";
-import React from "react";
 
 const AlertMessage = ({ message, type }) => {
   return (

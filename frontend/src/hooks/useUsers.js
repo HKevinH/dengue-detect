@@ -3,7 +3,6 @@ import { useUsersStore } from "../store/usersStore";
 import { loginByUser, registerByUser } from "../api/http.client";
 
 const useUsers = () => {
-  const [users, setUsers] = useState([]);
   const [message, setMessage] = useState("");
   const { currentSession, setCurrentSession } = useUsersStore((state) => state);
 
@@ -38,7 +37,7 @@ const useUsers = () => {
     }
   }, []);
 
-  return { users, register, message, currentSession, login };
+  return { register, message, currentSession, login };
 };
 
 export default useUsers;

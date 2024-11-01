@@ -12,10 +12,10 @@ const { Title } = Typography;
 
 const SignUpPage = ({ login }) => {
   const navigate = useNavigate();
-  const { register, message, currentSession, login } = useUsers();
+  const { register, message, currentSession, login: loginUser } = useUsers();
   const onFinish = async (values) => {
     if (login) {
-      await login(values);
+      await loginUser(values);
     } else {
       await register(values);
     }
