@@ -10,3 +10,5 @@ bcrypt
 pytest
 torch
 pandas
+joblib
+cryptography

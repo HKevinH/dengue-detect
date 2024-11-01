@@ -7,6 +7,7 @@ from app.models.question import Question
 from app.models.solutions import Solution
 from app.models.question_solution import QuestionSolution
 from app.models.evaluate import Evaluate
+from app.models.zone import Zone
 from app.db.base import Base
 
 async def init_db():
@@ -15,6 +16,7 @@ async def init_db():
         await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(User.metadata.create_all)
         await conn.run_sync(Question.metadata.create_all)
+        await conn.run_sync(Zone.metadata.create_all)
         # Luego crea las tablas con dependencias
         await conn.run_sync(Solution.metadata.create_all)
         await conn.run_sync(Evaluate.metadata.create_all)

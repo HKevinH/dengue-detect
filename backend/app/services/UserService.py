@@ -8,7 +8,6 @@ import jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import HTTPException, status
 
-
 SECRET_KEY = "R2VzaXRpb24gZGUgcHJveWVjdG9zIFRJIC0gVVNDIC0gQml0QnVpbGRlcnMgLSBEZXRlbmNpb24gZGVsIGRlbmd1ZQ=="
 ALGORITHM = "HS256"
 
