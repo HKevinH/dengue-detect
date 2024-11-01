@@ -17,6 +17,7 @@ categorical_columns = [
 
 class PatientData(BaseModel):
     # Síntomas
+    
     fiebre: int
     cefalea: int
     dolor_retro_ocular: int
@@ -48,3 +49,6 @@ class PatientData(BaseModel):
     etnia: str
     estrato: str
     nacionalidad: str
+    
+    class Config:
+        orm_mode = True
