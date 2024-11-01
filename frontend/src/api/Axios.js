@@ -1,8 +1,21 @@
 import axios from "axios";
+import { getKeyStorage } from "../storage/session";
+
+const token = getKeyStorage("token");
 
 const http = axios.create({
   baseURL: "http://localhost:8000/api/v1/",
 });
+
+http.interceptors.request.use(
+  (config) => {
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export const get = async (url) => {
   try {
