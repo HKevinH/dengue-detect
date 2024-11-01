@@ -29,15 +29,18 @@ const useUsers = () => {
     };
     try {
       const res = await loginByUser(newUser);
-      const { data } = res;
-      setCurrentSession(data);
+      console.log("res", res);
       setMessage(res.detail);
     } catch (error) {
       console.error(error);
     }
   }, []);
 
-  return { register, message, currentSession, login };
+  const clearMessage = useCallback(() => {
+    setMessage("");
+  }, []);
+
+  return { register, message, currentSession, login, clearMessage };
 };
 
 export default useUsers;

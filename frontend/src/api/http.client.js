@@ -12,7 +12,7 @@ const registerByUser = async (user) => {
 const loginByUser = async (user) => {
   try {
     const response = await post("login", user);
-    return response.data;
+    return response;
   } catch (error) {
     console.error(error);
   }
@@ -21,7 +21,7 @@ const loginByUser = async (user) => {
 const getNewsNotices = async () => {
   try {
     const response = await get("news");
-    return response.data;
+    return response;
   } catch (error) {
     console.error(error);
   }
@@ -29,7 +29,7 @@ const getNewsNotices = async () => {
 const getHistoryResultsByUser = async (id) => {
   try {
     const response = await get(`history/${id}`);
-    return response.data;
+    return response;
   } catch (error) {
     console.error(error);
   }

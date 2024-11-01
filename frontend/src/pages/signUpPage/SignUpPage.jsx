@@ -2,8 +2,8 @@
 import { Tabs, Row, Col, Layout, Typography } from "antd";
 import { FormLogin, FormRegister } from "./Forms";
 import useUsers from "../../hooks/useUsers";
-import { AlertMessage } from "../../components/atoms/AlertMessage";
-import { useEffect } from "react";
+import AlertMessage from "../../components/atoms/AlertMessage";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 const { TabPane } = Tabs;
@@ -12,7 +12,14 @@ const { Title } = Typography;
 
 const SignUpPage = ({ login }) => {
   const navigate = useNavigate();
-  const { register, message, currentSession, login: loginUser } = useUsers();
+  const {
+    register,
+    message,
+    currentSession,
+    login: loginUser,
+    clearMessage,
+  } = useUsers();
+
   const onFinish = async (values) => {
     if (login) {
       await loginUser(values);
@@ -25,7 +32,17 @@ const SignUpPage = ({ login }) => {
     if (currentSession) {
       navigate("/panel");
     }
-  }, [currentSession]);
+  }, [currentSession, navigate]);
+
+  useEffect(() => {
+    if (message) {
+      clearMessage();
+    }
+  }, [message, clearMessage]);
+
+  const handleTabChange = (key) => {
+    navigate(key === "1" ? "/login" : "/register");
+  };
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Content>
@@ -45,7 +62,11 @@ const SignUpPage = ({ login }) => {
               >
                 Dengue Detect
               </Title>
-              <Tabs defaultActiveKey={`${login ? "1" : "2"}`} centered>
+              <Tabs
+                defaultActiveKey={`${login ? "1" : "2"}`}
+                centered
+                onChange={handleTabChange}
+              >
                 <TabPane tab="Iniciar Sesion" key="1">
                   <FormLogin onFinish={onFinish} />
                 </TabPane>
@@ -58,10 +79,14 @@ const SignUpPage = ({ login }) => {
         </Row>
       </Content>
 
-      {message && (
+      {message && message.length > 0 && (
         <AlertMessage
           message={message}
-          type={message.includes("Error") ? "error" : "success"}
+          type={
+            message.includes("Error") || message.includes("incorrectos")
+              ? "error"
+              : "success"
+          }
         />
       )}
     </Layout>

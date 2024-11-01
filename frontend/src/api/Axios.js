@@ -23,6 +23,7 @@ export const get = async (url) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    return error.response.data;
   }
 };
 
@@ -32,6 +33,7 @@ export const post = async (url, data) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    return error.response.data;
   }
 };
 
@@ -41,6 +43,7 @@ export const put = async (url, data) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    return error.response.data;
   }
 };
 
