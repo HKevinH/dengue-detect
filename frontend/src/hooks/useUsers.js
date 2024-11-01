@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useUsersStore } from "../store/usersStore";
 
 const useUsers = () => {
   const [users, setUsers] = useState([]);
   const { currentSession } = useUsersStore((state) => state);
 
-  return { users };
+  const register = useCallback(async (user) => {
+    console.log(user);
+  }, []);
+  return { users, register };
 };
 
 export default useUsers;

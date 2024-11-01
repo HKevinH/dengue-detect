@@ -1,14 +1,20 @@
 /* eslint-disable react/prop-types */
 import { Tabs, Row, Col, Layout, Typography } from "antd";
 import { FormLogin, FormRegister } from "./Forms";
+import useUsers from "../../hooks/useUsers";
 
 const { TabPane } = Tabs;
 const { Content } = Layout;
 const { Title } = Typography;
 
 const SignUpPage = ({ login }) => {
-  const onFinish = (values) => {
-    console.log("Received values: ", values);
+  const { register } = useUsers();
+  const onFinish = async (values) => {
+    if (login) {
+      console.log("Login", values);
+    } else {
+      await register(values);
+    }
   };
 
   return (
