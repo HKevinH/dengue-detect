@@ -37,8 +37,12 @@ async def authenticate_user(db: AsyncSession, email: str, password: str):
     user = result.scalars().first()
 
     if not user or not pwd_context.verify(password, user.password):
-        return None
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail='El correo o contreseña son incorrectos'
+        )
     return user
+
 
 def create_access_token(data: dict):
     to_encode = data.copy()
