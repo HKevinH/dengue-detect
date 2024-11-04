@@ -35,4 +35,12 @@ const getHistoryResultsByUser = async (id) => {
   }
 };
 
-export { registerByUser, loginByUser, getNewsNotices, getHistoryResultsByUser };
+const getUserInfo = async (data) => await post(`me`, data);
+
+export {
+  registerByUser,
+  loginByUser,
+  getNewsNotices,
+  getHistoryResultsByUser,
+  getUserInfo,
+};

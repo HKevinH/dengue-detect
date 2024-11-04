@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useUsersStore } from "../store/usersStore";
-import { loginByUser, registerByUser } from "../api/http.client";
+import { getUserInfo, loginByUser, registerByUser } from "../api/http.client";
 import { setKeyStorage } from "../storage/session";
 
 const useUsers = () => {
@@ -33,8 +33,12 @@ const useUsers = () => {
       const { access_token } = res;
 
       if (access_token) {
+        const user = await getUserInfo(newUser);
+
+        console.log(user);
         setKeyStorage("token", access_token);
-        setCurrentSession(access_token);
+
+        setCurrentSession(user);
       }
 
       setMessage(res.detail);

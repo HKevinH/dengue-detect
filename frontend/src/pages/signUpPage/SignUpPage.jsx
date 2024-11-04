@@ -3,7 +3,7 @@ import { Tabs, Row, Col, Layout, Typography } from "antd";
 import { FormLogin, FormRegister } from "./Forms";
 import useUsers from "../../hooks/useUsers";
 import AlertMessage from "../../components/atoms/AlertMessage";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 const { TabPane } = Tabs;

@@ -3,6 +3,7 @@ from ..models.user import User
 from app.schemas.user_schema import UserCreate
 from passlib.context import CryptContext
 from sqlalchemy.future import select
+from sqlalchemy import update
 
 import jwt
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -41,6 +42,9 @@ async def authenticate_user(db: AsyncSession, email: str, password: str):
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail='El correo o contreseña son incorrectos'
         )
+    stmt = update(User).where(User.email == email).values(online=True);
+    await db.execute(stmt)
+    await db.commit()
     return user
 
 

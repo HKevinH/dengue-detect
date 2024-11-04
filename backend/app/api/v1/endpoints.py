@@ -56,8 +56,8 @@ async def login_user(user_login: UserLogin, db: AsyncSession= Depends(get_db)):
     access_token = create_access_token(data={"sub": user.email})
     return {"access_token": access_token, "token_type": "bearer"}
 
-@router.get("/me", response_model=UserLogin)
-async def get_user_me(db: AsyncSession = Depends(get_db)):
-    # Información del usuario logueado
-    result = authenticate_user(db, UserLogin.email, UserLogin.password)
+@router.post("/me", response_model=UserResponse)
+async def get_user_me(user_login: UserLogin, db: AsyncSession = Depends(get_db)):
+    # Pending to implement the logic to get the user from the token
+    result = await authenticate_user(db, user_login.email, user_login.password)
     return result

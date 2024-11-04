@@ -4,8 +4,11 @@ import {
   LogoutOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import useUsers from "../../hooks/useUsers";
 
 const UserAvatar = () => {
+  const { currentSession } = useUsers();
+  console.log(currentSession);
   const handleMenuClick = (e) => {
     if (e.key === "logout") {
       message.success("Sesión cerrada correctamente");
@@ -16,6 +19,9 @@ const UserAvatar = () => {
 
   const menu = (
     <Menu onClick={handleMenuClick}>
+      <Menu.Item key="settings" icon={<SettingOutlined />}>
+        {currentSession?.email}
+      </Menu.Item>
       <Menu.Item key="settings" icon={<SettingOutlined />}>
         Configuración
       </Menu.Item>
@@ -29,6 +35,7 @@ const UserAvatar = () => {
   return (
     <Dropdown overlay={menu} trigger={["click"]}>
       <Button type="text" style={{ padding: 0 }}>
+        <p>{currentSession?.name}</p>
         <Avatar size="large" icon={<UserOutlined />} />
       </Button>
     </Dropdown>
