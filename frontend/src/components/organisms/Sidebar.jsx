@@ -154,8 +154,6 @@ export const Sidebar = ({ collapsed, setCollapsed }) => {
             </Menu.Item>
           ))}
         </Menu>
-
-        <div className="sidebar-footer">{!collapsed && "Account"}</div>
       </Sider>
     </>
   );
