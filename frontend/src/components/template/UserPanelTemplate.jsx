@@ -5,6 +5,7 @@ import { Sidebar } from "../organisms/Sidebar";
 import { Outlet } from "react-router";
 import { useState } from "react";
 import UserAvatar from "../organisms/UserAvatar";
+import "../../styles/userPanelTemplate.css";
 
 const { Header, Content } = Layout;
 
@@ -14,7 +15,8 @@ const UserPanelTemplate = () => {
   return (
     <Layout
       style={{
-        minHeight: window.innerHeight * 0.9,
+        paddingTop: "4px",
+        minHeight: window.innerHeight * 0.97,
         overflowY: "hidden",
       }}
     >
@@ -26,15 +28,7 @@ const UserPanelTemplate = () => {
           transition: "margin-left 0.3s ease",
         }}
       >
-        <Header
-          style={{
-            backgroundColor: "#fff",
-            borderRadius: "0 10px 10px 0",
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-          }}
-        >
+        <Header className="header-nav">
           <UserAvatar />
         </Header>
 

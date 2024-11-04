@@ -8,7 +8,6 @@ import useUsers from "../../hooks/useUsers";
 
 const UserAvatar = () => {
   const { currentSession } = useUsers();
-  console.log(currentSession);
   const handleMenuClick = (e) => {
     if (e.key === "logout") {
       message.success("Sesión cerrada correctamente");
@@ -20,7 +19,7 @@ const UserAvatar = () => {
   const menu = (
     <Menu onClick={handleMenuClick}>
       <Menu.Item key="settings" icon={<SettingOutlined />}>
-        {currentSession?.email}
+        {currentSession?.email || "correo@gmail.com"}
       </Menu.Item>
       <Menu.Item key="settings" icon={<SettingOutlined />}>
         Configuración
