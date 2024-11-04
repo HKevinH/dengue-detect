@@ -56,8 +56,8 @@ async def login_user(user_login: UserLogin, db: AsyncSession= Depends(get_db)):
     access_token = create_access_token(data={"sub": user.email})
     return {"access_token": access_token, "token_type": "bearer"}
 
-@router.get("/me", response_model=UserResponse)
+@router.get("/me", response_model=UserLogin)
 async def get_user_me(db: AsyncSession = Depends(get_db)):
     # Información del usuario logueado
-    result = authenticate_user(db, UserResponse.email, UserResponse.password)
+    result = authenticate_user(db, UserLogin.email, UserLogin.password)
     return result
