@@ -19,16 +19,6 @@ export const Zones = () => {
       <Layout>
         <Layout style={{ padding: "24px", position: "relative" }}>
           <Content style={{ padding: "24px", backgroundColor: "#fff" }}>
-            <Row gutter={[16, 16]}>
-              <Col span={24}>
-                <Title level={4}>Ubicación Actual y Zonas Afectadas</Title>
-                <Text>
-                  Aquí puedes ver las zonas cercanas a tu ubicación que están
-                  afectadas por el dengue. Usa el mapa para explorar.
-                </Text>
-              </Col>
-            </Row>
-
             <Row style={{ marginTop: "20px", position: "relative" }}>
               <Col span={24}>
                 <MapComponent />
