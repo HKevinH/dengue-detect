@@ -1,17 +1,17 @@
 .sidebar {
   margin: 10px 10px 10px 10px;
   border-radius: 20px !important;
-  min-height: 90vh;
+  min-height: 97%;
   position: fixed;
   left: 0;
   top: 0;
-  bottom: 0;
+  bottom: 20px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
   overflow: hidden !important;
 }
 
-.sidebar.ant-layout-sider {
-  border-radius: 20px !important;
+.sidebar .ant-layout-sider-trigger {
+  position: relative !important;
 }
 
 

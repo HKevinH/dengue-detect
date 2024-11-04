@@ -1,9 +1,22 @@
-import { Layout, Form, Radio, Button, DatePicker } from "antd";
+import {
+  Layout,
+  Form,
+  Radio,
+  DatePicker,
+  Button,
+  Card,
+  Steps,
+  Typography,
+} from "antd";
 import { useState } from "react";
+import "../../styles/questionnaire.css";
+const { Title } = Typography;
+const { Step } = Steps;
 
 export const Questionnaire = () => {
   const [form] = Form.useForm();
   const [submitted, setSubmitted] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
 
   const questions = [
     {
@@ -18,8 +31,8 @@ export const Questionnaire = () => {
       rules: [{ required: true, message: "Por favor selecciona una opción" }],
     },
     {
-      label: "¿Tienes sarpullido?",
-      name: "sarpullido",
+      label: "¿Tienes dolor de cabeza (cefalea)?",
+      name: "cefalea",
       component: (
         <Radio.Group>
           <Radio value="si">Sí</Radio>
@@ -29,8 +42,8 @@ export const Questionnaire = () => {
       rules: [{ required: true, message: "Por favor selecciona una opción" }],
     },
     {
-      label: "¿Has experimentado dolor muscular o en las articulaciones?",
-      name: "dolor",
+      label: "¿Tienes dolor detrás de los ojos (dolor retro-ocular)?",
+      name: "dolor_retro_ocular",
       component: (
         <Radio.Group>
           <Radio value="si">Sí</Radio>
@@ -40,9 +53,195 @@ export const Questionnaire = () => {
       rules: [{ required: true, message: "Por favor selecciona una opción" }],
     },
     {
-      label:
-        "¿Has estado en una zona con brotes conocidos de dengue recientemente?",
-      name: "exposicion",
+      label: "¿Has experimentado dolores musculares (mialgias)?",
+      name: "malgias",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes dolor en las articulaciones (artralgia)?",
+      name: "artralgia",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes erupciones en la piel?",
+      name: "erupcion",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes dolor abdominal?",
+      name: "dolor_abdominal",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Has tenido vómitos?",
+      name: "vomito",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Has tenido diarrea?",
+      name: "diarrea",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Te sientes somnoliento?",
+      name: "somnolencia",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes presión baja (hipotensión)?",
+      name: "hipotension",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes agrandamiento del hígado (hepatomegalia)?",
+      name: "hepatomegalia",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes hemorragias en las mucosas?",
+      name: "hem_mucosa",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes hipotermia?",
+      name: "hipotermia",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes un aumento en el hematocrito?",
+      name: "aum_hemato",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes una caída en el número de plaquetas?",
+      name: "caida_plaquetas",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes acumulación de líquidos?",
+      name: "acumulacion_liquidos",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes extravasación de líquidos?",
+      name: "extravasacion",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Has tenido hemorragias?",
+      name: "hemorragia",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Has experimentado un choque?",
+      name: "choque",
+      component: (
+        <Radio.Group>
+          <Radio value="si">Sí</Radio>
+          <Radio value="no">No</Radio>
+        </Radio.Group>
+      ),
+      rules: [{ required: true, message: "Por favor selecciona una opción" }],
+    },
+    {
+      label: "¿Tienes algún daño en órganos?",
+      name: "daño_organo",
       component: (
         <Radio.Group>
           <Radio value="si">Sí</Radio>
@@ -59,37 +258,106 @@ export const Questionnaire = () => {
     },
   ];
 
+  const nextStep = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
+  const prevStep = () => {
+    setCurrentStep(currentStep - 1);
+  };
+
   const onFinish = (values) => {
     console.log("Cuestionario enviado: ", values);
     setSubmitted(true);
   };
 
   return (
-    <Layout style={{ padding: "24px" }}>
-      <h2>Cuestionario para la detección de dengue</h2>
+    <Layout style={{ padding: "24px", backgroundColor: "#f0f2f5" }}>
+      <Card
+        className="questionnaire-card"
+        bodyStyle={{
+          padding: "50px",
+          justifyContent: "center",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Title
+          level={2}
+          style={{ textAlign: "center", color: "#1890ff", height: 100 }}
+        >
+          Cuestionario para la detección de dengue
+        </Title>
 
-      {!submitted ? (
-        <Form form={form} layout="vertical" onFinish={onFinish}>
-          {questions.map((pregunta) => (
-            <Form.Item
-              key={pregunta.name}
-              label={pregunta.label}
-              name={pregunta.name}
-              rules={pregunta.rules}
+        {!submitted ? (
+          <>
+            <Steps
+              current={currentStep}
+              size="small"
+              style={{ marginBottom: "20px" }}
             >
-              {pregunta.component}
-            </Form.Item>
-          ))}
+              {questions.map((_, index) => (
+                <Step key={index} />
+              ))}
+            </Steps>
 
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Enviar
-            </Button>
-          </Form.Item>
-        </Form>
-      ) : (
-        <h2>¡Gracias por completar el cuestionario!</h2>
-      )}
+            <Form
+              form={form}
+              layout="vertical"
+              onFinish={onFinish}
+              className="questionnaire-form"
+            >
+              <Form.Item
+                label={questions[currentStep].label}
+                name={questions[currentStep].name}
+                rules={questions[currentStep].rules}
+              >
+                {questions[currentStep].component}
+              </Form.Item>
+
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                {currentStep > 0 && (
+                  <Button onClick={prevStep} style={{ width: "45%" }}>
+                    Anterior
+                  </Button>
+                )}
+                {currentStep < questions.length - 1 && (
+                  <Button
+                    type="primary"
+                    onClick={() => {
+                      form
+                        .validateFields([questions[currentStep].name])
+                        .then(() => nextStep())
+                        .catch(() => {});
+                    }}
+                    style={{ width: currentStep > 0 ? "45%" : "100%" }}
+                  >
+                    Siguiente
+                  </Button>
+                )}
+                {currentStep === questions.length - 1 && (
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    style={{ width: "100%" }}
+                  >
+                    Enviar
+                  </Button>
+                )}
+              </div>
+            </Form>
+          </>
+        ) : (
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <Title level={4} style={{ color: "#52c41a" }}>
+              ¡Gracias por completar el cuestionario!
+            </Title>
+            <Typography.Text style={{ fontSize: "16px" }}>
+              Tus respuestas han sido enviadas exitosamente.
+            </Typography.Text>
+          </div>
+        )}
+      </Card>
     </Layout>
   );
 };

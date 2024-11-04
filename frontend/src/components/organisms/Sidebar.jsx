@@ -102,6 +102,7 @@ export const Sidebar = ({ collapsed, setCollapsed }) => {
             backgroundColor: "#001529",
             textAlign: "center",
             fontFamily: "Poppins",
+            borderRadius: "5px",
           },
         }}
         locale={{
