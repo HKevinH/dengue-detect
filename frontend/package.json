@@ -15,6 +15,7 @@
     "axios": "^1.7.7",
     "dengue-detect-monorepo": "file:..",
     "leaflet": "^1.9.4",
+    "proj4": "^2.14.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-joyride": "^2.9.2",
