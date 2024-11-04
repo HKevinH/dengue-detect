@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import {
-  Row,
-  Col,
   Layout,
   Typography,
   Input as AntInput,
   Button as AntButton,
 } from "antd";
 import MessageList from "../../components/molecules/MessageList";
-
+import "../../styles/chat.css";
 const { Content } = Layout;
 const { Title } = Typography;
 
@@ -52,57 +50,45 @@ const ChatWindow = () => {
   }, [messages]);
 
   return (
-    <Layout>
-      <Content>
-        <Row justify="center" align="middle" style={{ minHeight: "100vh" }}>
-          <Col xs={24} sm={16} md={12} lg={8}>
-            <div
-              style={{
-                padding: "20px",
-                background: "#fff",
-                borderRadius: "10px",
-                boxShadow: "0 0 15px rgba(0, 0, 0, 0.1)",
-                height: "80vh",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <Title
-                level={2}
-                style={{ textAlign: "center", marginBottom: "20px" }}
-              >
-                Chatbot
+    <Layout
+      className="layout-container-chat"
+      style={{
+        padding: "20px",
+        height: window.innerHeight * 0.85,
+        width: window.innerWidth * 0.85,
+      }}
+    >
+      <Content className="chat-container">
+        <Title level={3} className="chat-title">
+          Chatbot
+        </Title>
+
+        <div className="message-container">
+          {messages.length > 0 ? (
+            <>
+              <MessageList messages={messages} />
+              <div ref={messageEndRef} />
+            </>
+          ) : (
+            <div className="empty-chat">
+              <Title level={4} className="typewriter">
+                ¡Hola! ¿En qué puedo ayudarte hoy?
               </Title>
-
-              <div
-                style={{
-                  flex: 1,
-                  overflowY: "auto",
-                  marginBottom: "20px",
-                  padding: "10px",
-                  scrollbarColor: "#f5f5f5 #fff",
-                  borderRadius: "10px",
-                  scrollbarWidth: "thin",
-                }}
-              >
-                <MessageList messages={messages} />
-                <div ref={messageEndRef} />
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <AntInput
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Escribe tu mensaje..."
-                  style={{ flex: 1, marginRight: "10px" }}
-                />
-                <AntButton type="primary" onClick={handleSend}>
-                  Enviar
-                </AntButton>
-              </div>
             </div>
-          </Col>
-        </Row>
+          )}
+        </div>
+
+        <div className="chat-input-container">
+          <AntInput
+            className="chat-input"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Escribe tu mensaje..."
+          />
+          <AntButton type="primary" onClick={handleSend}>
+            Enviar
+          </AntButton>
+        </div>
       </Content>
     </Layout>
   );

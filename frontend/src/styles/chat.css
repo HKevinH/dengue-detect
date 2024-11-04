@@ -1,0 +1,130 @@
+.layout-container-chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-title {
+    text-align: center;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-right: 20px;
+    /* background-color: #1890ff; */
+    width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.message-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: thin;
+}
+
+.message-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.message-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.message-container::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+}
+
+.chat-input-container {
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    padding: 10px;
+    height: 70px;
+    border-top: 1px solid #eaeaea;
+    background-color: #fff;
+}
+
+.chat-input {
+    flex-grow: 1;
+    border: none;
+    height: 80%;
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+.chat-input:focus {
+    outline: none;
+}
+
+.message-list-item.user {
+    background-color: #1890ff;
+    color: white;
+    align-self: flex-end;
+    padding: 10px;
+    border-radius: 15px 15px 0 15px;
+    margin-bottom: 8px;
+    max-width: 75%;
+}
+
+.message-list-item.bot {
+    background-color: #e1e1e1;
+    color: black;
+    align-self: flex-start;
+    padding: 10px;
+    border-radius: 15px 15px 15px 0;
+    margin-bottom: 8px;
+    max-width: 75%;
+}
+
+.empty-chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 370px;
+    border-right: 3px solid;
+    font-size: 24px;
+    animation: typing 3s steps(30, end), blink-caret 0.75s step-end 2 forwards;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: black;
+    }
+}

@@ -1,32 +1,43 @@
 /* eslint-disable react/prop-types */
-import { Card, Row, Col } from "antd";
+import { Avatar, Typography, Row, Col } from "antd";
+import { UserOutlined, RobotOutlined } from "@ant-design/icons";
+
+const { Text } = Typography;
 
 const Message = ({ text, sender }) => {
+  const isUser = sender === "user";
   return (
-    <Row
-      justify={sender === "user" ? "end" : "start"}
-      style={{ marginBottom: "5px" }}
-    >
+    <Row justify={isUser ? "end" : "start"} style={{ marginBottom: "10px" }}>
+      {!isUser && (
+        <Col flex="none" style={{ display: "flex", alignItems: "center" }}>
+          <Avatar
+            style={{ backgroundColor: "#8e8e8e", marginRight: "8px" }}
+            icon={<RobotOutlined />}
+          />
+        </Col>
+      )}
       <Col>
-        <Card
-          bordered={false}
+        <div
           style={{
-            backgroundColor: sender === "user" ? "#daf8cb" : "#f1f0f0",
+            backgroundColor: isUser ? "#d9d9d9" : "#f0f0f0",
             color: "#000",
-            borderRadius: "10px",
-            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+            borderRadius: "15px",
+            padding: "10px",
             maxWidth: "300px",
-            display: "inline-block",
             wordWrap: "break-word",
           }}
-          bodyStyle={{ padding: "10px" }}
         >
-          <p style={{ fontSize: 12, fontWeight: 800 }}>
-            {sender === "user" ? `Tu` : "Bot"}
-          </p>
-          <p style={{ marginBottom: 0 }}>{text}</p>
-        </Card>
+          <Text>{text}</Text>
+        </div>
       </Col>
+      {isUser && (
+        <Col flex="none" style={{ display: "flex", alignItems: "center" }}>
+          <Avatar
+            style={{ backgroundColor: "#595959", marginLeft: "8px" }}
+            icon={<UserOutlined />}
+          />
+        </Col>
+      )}
     </Row>
   );
 };
