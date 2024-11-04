@@ -1,10 +1,13 @@
-import { Avatar, Menu, Dropdown, Button, message } from "antd";
+import { Avatar, Menu, Dropdown, Button, message, Typography } from "antd";
 import {
   UserOutlined,
   LogoutOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 import useUsers from "../../hooks/useUsers";
+import "../../styles/avatar.css";
+
+const { Title } = Typography;
 
 const UserAvatar = () => {
   const { currentSession } = useUsers();
@@ -34,8 +37,10 @@ const UserAvatar = () => {
   return (
     <Dropdown overlay={menu} trigger={["click"]}>
       <Button type="text" style={{ padding: 0 }}>
-        <p>{currentSession?.name}</p>
-        <Avatar size="large" icon={<UserOutlined />} />
+        <Title level={5} className="nameText">
+          {currentSession?.name || "Juan Gomez"}
+        </Title>
+        <Avatar size="large" crossOrigin="anonymous" icon={<UserOutlined />} />
       </Button>
     </Dropdown>
   );
