@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import { useEffect, useState } from "react";
 import "leaflet/dist/leaflet.css";
+import { capitalize } from "../../utils/Util";
 
 const MapWithGeoJSON = () => {
   const [dataGeo, setDataGeo] = useState(null);
@@ -10,7 +11,7 @@ const MapWithGeoJSON = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data/map.geojson");
+        const response = await fetch("/data/mc_comunas.geojson");
         if (!response.ok) throw new Error("Error al cargar el archivo GeoJSON");
 
         const data = await response.json();
@@ -26,17 +27,34 @@ const MapWithGeoJSON = () => {
 
   const MapWithGeoJSONLayer = () => {
     const map = useMap();
+
     useEffect(() => {
       if (dataGeo) {
-        L.geoJSON(dataGeo, {
+        const geoJsonLayer = L.geoJSON(dataGeo, {
           style: {
-            color: "blue",
+            color: "#6a97c2",
             weight: 2,
             opacity: 0.6,
           },
+          onEachFeature: (feature, layer) => {
+            const popupContent = feature.properties
+              ? Object.keys(feature.properties)
+                  .map(
+                    (key) =>
+                      `<b>${capitalize(key)}</b>: ${feature.properties[key]}`
+                  )
+                  .join("<br>")
+              : "No data available";
+
+            layer.bindPopup(popupContent);
+          },
         }).addTo(map);
 
-        map.fitBounds(L.geoJSON(dataGeo).getBounds());
+        map.fitBounds(geoJsonLayer.getBounds());
+
+        return () => {
+          map.removeLayer(geoJsonLayer);
+        };
       }
     }, [dataGeo, map]);
 
@@ -47,7 +65,7 @@ const MapWithGeoJSON = () => {
     <MapContainer
       center={[3.4516, -76.5319]}
       zoom={12}
-      style={{ height: window.innerHeight * 0.75, width: "100%" }}
+      style={{ height: window.innerHeight * 0.85, width: "100%" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
