@@ -15,6 +15,7 @@ def preprocess_input(data):
     return input_final
 
 def predict_classification(data):
+    print("entre")
     input_final = preprocess_input(data)
     input_final = input_final.reindex(columns=gb_model.feature_names_in_, fill_value=0)
     prediction = gb_model.predict(input_final)[0]
