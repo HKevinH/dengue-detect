@@ -35,11 +35,21 @@ const getHistoryResultsByUser = async (id) => {
   }
 };
 
+const sendModelQuestion = async (values) => {
+  try {
+    const response = await post("classification", values);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const getUserInfo = async (data) => await post(`me`, data);
 
 export {
   registerByUser,
   loginByUser,
+  sendModelQuestion,
   getNewsNotices,
   getHistoryResultsByUser,
   getUserInfo,

@@ -1,3 +1,4 @@
+import { sendModelQuestion } from "../api/http.client";
 import { mapSiNoToInt } from "../utils/utils";
 
 export const useQuestions = () => {
@@ -27,20 +28,33 @@ export const useQuestions = () => {
       daño_organo: mapSiNoToInt(values.daño_organo),
 
       // Datos categóricos (asumiendo que los recolectas en el formulario)
-      ciudad_residencia: values.ciudad_residencia,
-      dpto_residencia: values.dpto_residencia,
-      nombre_municipio_procedencia: values.nombre_municipio_procedencia,
-      sexo: values.sexo,
-      tipo_seguridad_social: values.tipo_seguridad_social,
-      etnia: values.etnia,
-      estrato: values.estrato,
-      nacionalidad: values.nacionalidad,
+      //   ciudad_residencia: values.ciudad_residencia,
+      ciudad_residencia: "CALI",
+      //   dpto_residencia: values.dpto_residencia,
+      dpto_residencia: "VALLE DEL CAUCA",
+      //   nombre_municipio_procedencia: values.nombre_municipio_procedencia,
+      nombre_municipio_procedencia: "CALI",
+      //   sexo: values.sexo,
+      sexo: "M",
+      //   tipo_seguridad_social: values.tipo_seguridad_social,
+      tipo_seguridad_social: "Contributivo", // No se necesita transformar  acomodar en las la lista de acuerdo a el dataset
+      //   etnia: values.etnia, // No se necesita transformar  acomodar en las la lista
+
+      etnia: "Otro", // No se necesita transformar  acomodar en las la lista de acuerdo a el dataset
+      //   estrato: values.estrato,
+      estrato: 1, // No se necesita transformar  acomodar en las la lista de acuerdo a el dataset
+      nacionalidad: "COLOMBIA", // No se necesita transformar  acomodar en las la lista de acuerdo a el dataset
 
       // Fecha (asegúrate de formatearla correctamente)
-      fechaSintomas: values.fechaSintomas,
+      fechaSintomas: values.fechaSintomas.format("DD/MM/YYYY"),
     };
 
-    console.log(transformedValues);
+    try {
+      const res = await sendModelQuestion(transformedValues);
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return { sendQuestion };
