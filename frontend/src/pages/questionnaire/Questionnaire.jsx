@@ -19,12 +19,8 @@ export const Questionnaire = () => {
   const [form] = Form.useForm();
   const [submitted, setSubmitted] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  const { sendQuestion } = useQuestions();
+  const { sendQuestion, responseLabel } = useQuestions();
 
-  const responseLabel = {
-    prediction: 0,
-    prediction_label: "sin signos de alarma",
-  };
   const questions = [
     {
       label: "¿Tienes fiebre?",

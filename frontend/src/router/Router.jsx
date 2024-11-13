@@ -6,6 +6,7 @@ import { Zones } from "../pages/zones/Zones";
 import { Questionnaire } from "../pages/questionnaire/Questionnaire";
 import { Results } from "../pages/results/Results";
 import { Settings } from "../pages/settings/Settings";
+import { Dashboard } from "../pages/dashboard/Dashboard";
 
 export const RouterLocation = () => {
   return (
@@ -15,7 +16,7 @@ export const RouterLocation = () => {
         <Route path="/login" element={<SignUpPage login={true} />} />
         <Route path="/panel" element={<UserPanel />}>
           <Route path="zones" element={<Zones />} />
-          <Route path="dashboard" element={<Zones />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="settings" element={<Settings />} />
           <Route path="results" element={<Results />} />
           <Route path="questionnaire" element={<Questionnaire />} />
