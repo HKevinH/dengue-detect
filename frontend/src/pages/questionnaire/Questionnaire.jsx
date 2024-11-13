@@ -5,14 +5,13 @@ import {
   DatePicker,
   Button,
   Card,
-  Steps,
   Typography,
 } from "antd";
 import { useState } from "react";
 import "../../styles/questionnaire.css";
+import dayjs from "dayjs";
 import { useQuestions } from "../../hooks/useQuestions";
 const { Title } = Typography;
-const { Step } = Steps;
 
 export const Questionnaire = () => {
   const [form] = Form.useForm();
@@ -255,7 +254,12 @@ export const Questionnaire = () => {
     {
       label: "Fecha en la que comenzaron los síntomas",
       name: "fechaSintomas",
-      component: <DatePicker format="MM/DD/YYYY" />,
+      component: (
+        <DatePicker
+          format="MM/DD/YYYY"
+          defaultValue={dayjs("10/12/2024", "MM/DD/YYYY")}
+        />
+      ),
       rules: [{ required: true, message: "Por favor selecciona una fecha" }],
     },
   ];
