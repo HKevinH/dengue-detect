@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { sendModelQuestion } from "../api/http.client";
 import { mapSiNoToInt } from "../utils/utils";
 
 export const useQuestions = () => {
+  const [responseLabel, setResponseLabel] = useState(null);
   const sendQuestion = async (values) => {
     const transformedValues = {
       // Síntomas (convertir "si"/"no" a 1/0)
@@ -52,10 +54,11 @@ export const useQuestions = () => {
     try {
       const res = await sendModelQuestion(transformedValues);
       console.log(res);
+      setResponseLabel(res);
     } catch (error) {
       console.error(error);
     }
   };
 
-  return { sendQuestion };
+  return { sendQuestion, responseLabel };
 };

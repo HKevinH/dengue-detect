@@ -6,11 +6,13 @@ import {
   Button,
   Card,
   Typography,
+  Modal,
 } from "antd";
 import { useState } from "react";
 import "../../styles/questionnaire.css";
 import dayjs from "dayjs";
 import { useQuestions } from "../../hooks/useQuestions";
+import { ConfettiComponent } from "../../components/atoms/Confetti";
 const { Title } = Typography;
 
 export const Questionnaire = () => {
@@ -19,6 +21,10 @@ export const Questionnaire = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const { sendQuestion } = useQuestions();
 
+  const responseLabel = {
+    prediction: 0,
+    prediction_label: "con signos de alarma",
+  };
   const questions = [
     {
       label: "¿Tienes fiebre?",
@@ -358,6 +364,28 @@ export const Questionnaire = () => {
           </div>
         )}
       </Card>
+
+      {responseLabel &&
+        responseLabel.prediction_label.includes("sin signos") && (
+          <ConfettiComponent />
+        )}
+      {responseLabel &&
+        responseLabel.prediction_label.includes("con signos") && (
+          <Modal
+            title="Advertencia"
+            visible={true}
+            onCancel={() => {}}
+            footer={null}
+          >
+            <Title level={4} style={{ color: "#f5222d" }}>
+              ¡Lo sentimos, pero parece que tienes síntomas de dengue!
+            </Title>
+
+            <Button type="primary" onClick={() => setSubmitted(false)}>
+              Ir a el bot de ayuda
+            </Button>
+          </Modal>
+        )}
     </Layout>
   );
 };
