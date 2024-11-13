@@ -37,13 +37,13 @@ export const useQuestions = () => {
       //   sexo: values.sexo,
       sexo: "M",
       //   tipo_seguridad_social: values.tipo_seguridad_social,
-      tipo_seguridad_social: "Contributivo", // No se necesita transformar  acomodar en las la lista de acuerdo a el dataset
+      tipo_seguridad_social: "Contributivo",
       //   etnia: values.etnia, // No se necesita transformar  acomodar en las la lista
 
-      etnia: "Otro", // No se necesita transformar  acomodar en las la lista de acuerdo a el dataset
+      etnia: "Otro",
       //   estrato: values.estrato,
-      estrato: 1, // No se necesita transformar  acomodar en las la lista de acuerdo a el dataset
-      nacionalidad: "COLOMBIA", // No se necesita transformar  acomodar en las la lista de acuerdo a el dataset
+      estrato: "1",
+      nacionalidad: "COLOMBIA",
 
       // Fecha (asegúrate de formatearla correctamente)
       fechaSintomas: values.fechaSintomas.format("DD/MM/YYYY"),
