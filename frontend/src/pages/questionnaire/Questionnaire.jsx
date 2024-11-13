@@ -23,7 +23,7 @@ export const Questionnaire = () => {
 
   const responseLabel = {
     prediction: 0,
-    prediction_label: "con signos de alarma",
+    prediction_label: "sin signos de alarma",
   };
   const questions = [
     {
@@ -375,6 +375,8 @@ export const Questionnaire = () => {
             title="Advertencia"
             visible={true}
             onCancel={() => {}}
+            closable={false}
+            centered
             footer={null}
           >
             <Title level={4} style={{ color: "#f5222d" }}>
