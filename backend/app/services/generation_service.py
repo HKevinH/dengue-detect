@@ -32,7 +32,6 @@ def generate_samples(data, class_label, num_samples):
     input_final = preprocess_input(data)
     input_tensor = torch.tensor(input_final.values, dtype=torch.float32)
 
-    # Generar espacio latente `z` y etiquetas `y_new`
     z = torch.randn(num_samples, cvae.latent_dim)  # Dimensión `(num_samples, latent_dim)`
     y_new = torch.tensor([class_label] * num_samples)  # Dimensión `(num_samples,)`
 

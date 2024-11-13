@@ -10,6 +10,7 @@ import {
 } from "antd";
 import { useState } from "react";
 import "../../styles/questionnaire.css";
+import { useQuestions } from "../../hooks/useQuestions";
 const { Title } = Typography;
 const { Step } = Steps;
 
@@ -17,6 +18,7 @@ export const Questionnaire = () => {
   const [form] = Form.useForm();
   const [submitted, setSubmitted] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const { sendQuestion } = useQuestions();
 
   const questions = [
     {
@@ -253,7 +255,7 @@ export const Questionnaire = () => {
     {
       label: "Fecha en la que comenzaron los síntomas",
       name: "fechaSintomas",
-      component: <DatePicker />,
+      component: <DatePicker format="MM/DD/YYYY" />,
       rules: [{ required: true, message: "Por favor selecciona una fecha" }],
     },
   ];
@@ -267,7 +269,7 @@ export const Questionnaire = () => {
   };
 
   const onFinish = (values) => {
-    console.log("Cuestionario enviado: ", values);
+    sendQuestion(values);
     setSubmitted(true);
   };
 
@@ -291,29 +293,23 @@ export const Questionnaire = () => {
 
         {!submitted ? (
           <>
-            <Steps
-              current={currentStep}
-              size="small"
-              style={{ marginBottom: "20px" }}
-            >
-              {questions.map((_, index) => (
-                <Step key={index} />
-              ))}
-            </Steps>
-
             <Form
               form={form}
               layout="vertical"
               onFinish={onFinish}
               className="questionnaire-form"
             >
-              <Form.Item
-                label={questions[currentStep].label}
-                name={questions[currentStep].name}
-                rules={questions[currentStep].rules}
-              >
-                {questions[currentStep].component}
-              </Form.Item>
+              {questions.map((question, index) => (
+                <Form.Item
+                  key={question.name}
+                  label={question.label}
+                  name={question.name}
+                  rules={question.rules}
+                  style={{ display: index === currentStep ? "block" : "none" }}
+                >
+                  {question.component}
+                </Form.Item>
+              ))}
 
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 {currentStep > 0 && (
