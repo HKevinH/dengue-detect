@@ -12,3 +12,4 @@ torch
 pandas
 joblib
 cryptography
+scikit-learn

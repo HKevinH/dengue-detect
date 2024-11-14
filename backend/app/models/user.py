@@ -14,6 +14,6 @@ class User(Base):
     state_account = Column(String(50), nullable=False) #(activo, inactivo, etc)
     role = Column(String(50), nullable=False) #(paciente, médico, administrador)
     online = Column(String(50), nullable=False) #(true, false)
-     
+
     evaluations = relationship("Evaluate", back_populates="user")
     questions = relationship("Question", back_populates="user")
