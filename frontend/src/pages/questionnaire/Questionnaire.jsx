@@ -280,7 +280,7 @@ export const Questionnaire = () => {
   };
 
   return (
-    <Layout style={{ padding: "24px", backgroundColor: "#f0f2f5" }}>
+    <Layout style={{ padding: "24px", backgroundColor: "#f0f2f5", marginTop: "50px" }}>
       <Card
         className="questionnaire-card"
         bodyStyle={{

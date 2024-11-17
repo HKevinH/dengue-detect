@@ -65,7 +65,7 @@ const columns = [
 
 export const Results = () => {
   return (
-    <Layout style={{ padding: "24px" }}>
+    <Layout style={{ padding: "24px", marginTop: "25px" }}>
       <h1>Resultados de los Cuestionarios</h1>
 
       <Table dataSource={dataSource} columns={columns} />
