@@ -14,6 +14,7 @@ const NewsCard = ({ title, description, date, image, url }) => (
       color: "white",
       height: "600px",
     }}
+    
     bodyStyle={{ padding: "16px", display: "flex", flexDirection: "column" }}
   >
     <Title level={4} style={{ color: "#ffffff", flexGrow: 1 }}>
