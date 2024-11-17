@@ -1,13 +1,15 @@
 .header-nav {
+    margin: 0px 10px 10px 10px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 20px;
-    position: relative;
-    left: -13px;
-    top: -2px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 97%;
     /* background-color: aqua; */
     z-index: 1000;
-    border-radius: 0px 20px 20px 0px;
+    border-radius: 10px 20px 20px 0px;
     color: #ffffff;
 }
