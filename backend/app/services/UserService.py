@@ -58,3 +58,16 @@ async def logout_user(db: AsyncSession, id: str):
     result = await db.execute(stmt)
     await db.commit()
     return True
+
+async def updateUser(db: AsyncSession, user):
+    stmt = update(User).where(User.id == user.id).values(
+        name=user.name,
+        email=user.email,
+        password=user.password,
+        state_account=user.state_account,
+        role=user.role,
+        online=user.online
+    )
+    result = await db.execute(stmt)
+    await db.commit()
+    return result

@@ -75,3 +75,8 @@ async def logout(user_id: int, db: AsyncSession = Depends(get_db)):
         
     return {"message": "Sesión cerrada exitosamente"}
   
+  
+@router.post("/updateUser/{user_id}", response_model=UserResponse)
+async def update_user(user_id: int, db: AsyncSession = Depends(get_db)):
+    # Pending to implement the logic to update the user
+    return {"message": "User updated successfully"}
