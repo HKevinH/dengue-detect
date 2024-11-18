@@ -61,3 +61,16 @@ async def get_user_me(user_login: UserLogin, db: AsyncSession = Depends(get_db))
     # Pending to implement the logic to get the user from the token
     result = await authenticate_user(db, user_login.email, user_login.password)
     return result
+
+
+@router.post("/logout")
+async def logout_user(user_id: int, db: AsyncSession = Depends(get_db)):
+    user_logout = await logout_user(user_id=user_id, db=db)
+    if not user_logout:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Ocurrió un error al cerrar sesión"
+        )
+        
+    return {"message": "Sesión cerrada exitosamente"}
+  
