@@ -80,3 +80,10 @@ async def logout(user_id: int, db: AsyncSession = Depends(get_db)):
 async def update_user(user_id: int, db: AsyncSession = Depends(get_db)):
     # Pending to implement the logic to update the user
     return {"message": "User updated successfully"}
+
+
+@router.get("/results/{user_id}")
+async def get_results(user_id: int, db: AsyncSession = Depends(get_db)):
+    # Pending to implement the logic to get the results
+    
+    return {"message": "Results obtained successfully"}

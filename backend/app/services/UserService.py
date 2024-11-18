@@ -71,3 +71,9 @@ async def updateUser(db: AsyncSession, user):
     result = await db.execute(stmt)
     await db.commit()
     return result
+
+
+async def getResultsByUser(db: AsyncSession, id: str):
+    result = await db.execute(select(User).where(User.id == id))
+    user = result.scalars().first()
+    return user

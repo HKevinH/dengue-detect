@@ -8,7 +8,6 @@ from fastapi.responses import JSONResponse
 router = APIRouter()
 
 @router.post("/samples/")
-@router.post("/samples/")
 def generate_samples_endpoint(data: PatientData, class_label: int, num_samples: int = 1):
     if num_samples < 1:
         raise HTTPException(status_code=400, detail="num_samples must be greater than 0")
