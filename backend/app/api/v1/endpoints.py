@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.schemas.user_schema import UserCreate, UserResponse, UserLogin, LoginResponse
-from app.services.userService import create_user, authenticate_user, create_access_token
+from app.services.userService import create_user, authenticate_user, create_access_token,logout_user
 from app.db.session import get_db
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
@@ -63,9 +63,10 @@ async def get_user_me(user_login: UserLogin, db: AsyncSession = Depends(get_db))
     return result
 
 
-@router.post("/logout")
-async def logout_user(user_id: int, db: AsyncSession = Depends(get_db)):
-    user_logout = await logout_user(user_id=user_id, db=db)
+@router.get("/logout/{user_id}")
+async def logout(user_id: int, db: AsyncSession = Depends(get_db)):
+    print(user_id)
+    user_logout = await logout_user(id=user_id, db=db)
     if not user_logout:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

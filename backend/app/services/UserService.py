@@ -53,8 +53,8 @@ def create_access_token(data: dict):
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
-def logout_user(db: AsyncSession, email: str):
-    stmt = update(User).where(User.email == email).values(online=0);
-    db.execute(stmt)
-    db.commit()
+async def logout_user(db: AsyncSession, id: str):
+    stmt = update(User).where(User.id == id).values(online=False);
+    result = await db.execute(stmt)
+    await db.commit()
     return True
