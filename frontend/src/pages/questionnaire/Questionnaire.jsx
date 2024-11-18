@@ -280,7 +280,9 @@ export const Questionnaire = () => {
   };
 
   return (
-    <Layout style={{ padding: "24px", backgroundColor: "#f0f2f5", marginTop: "50px" }}>
+    <Layout
+      style={{ padding: "24px", backgroundColor: "#f0f2f5", marginTop: "50px" }}
+    >
       <Card
         className="questionnaire-card"
         bodyStyle={{
@@ -308,8 +310,10 @@ export const Questionnaire = () => {
               {questions.map((question, index) => (
                 <Form.Item
                   key={question.name}
-                  label={question.label}
                   name={question.name}
+                  label={
+                    <span className="custom-label-class">{question.label}</span>
+                  }
                   rules={question.rules}
                   style={{ display: index === currentStep ? "block" : "none" }}
                 >
@@ -351,7 +355,7 @@ export const Questionnaire = () => {
           </>
         ) : (
           <div style={{ textAlign: "center", marginTop: "20px" }}>
-            <Title level={4} style={{ color: "#52c41a" }}>
+            <Title level={5} style={{ color: "#52c41a" }}>
               ¡Gracias por completar el cuestionario!
             </Title>
             <Typography.Text style={{ fontSize: "16px" }}>
