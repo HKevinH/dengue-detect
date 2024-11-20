@@ -1,4 +1,4 @@
-import { get, post } from "./axios";
+import { get, post, chatPost } from "./axios";
 
 const registerByUser = async (user) => {
   try {
@@ -46,6 +46,17 @@ const sendModelQuestion = async (values) => {
 
 const getUserInfo = async (data) => await post(`me`, data);
 
+const sendChatMessage = async (messages) => {
+
+  try {
+    const response = await chatPost(messages);
+    return response;
+  } catch (error) {
+    console.error("Error al enviar mensaje a Chatbase:", error.message);
+    throw error;
+  }
+};
+
 export {
   registerByUser,
   loginByUser,
@@ -53,4 +64,5 @@ export {
   getNewsNotices,
   getHistoryResultsByUser,
   getUserInfo,
+  sendChatMessage,
 };
