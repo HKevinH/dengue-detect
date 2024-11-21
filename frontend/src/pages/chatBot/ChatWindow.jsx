@@ -6,38 +6,49 @@ import {
   Button as AntButton,
 } from "antd";
 import MessageList from "../../components/molecules/MessageList";
+import { sendChatMessage } from "../../api/http.client";
 import "../../styles/chat.css";
+
 const { Content } = Layout;
 const { Title } = Typography;
+
 
 const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [loading, setLoading] = useState(false);
   const messageEndRef = useRef(null);
 
-  const handleSend = () => {
+
+  const handleSend = async () => {
     if (inputValue.trim()) {
-      setMessages([...messages, { text: inputValue, sender: "user" }]);
+      const userMessage = { content: inputValue, role: "user" };
+
+      // Agregar el mensaje del usuario al estado
+      setMessages((prevMessages) => [...prevMessages, { text: inputValue, sender: "user" }]);
       setInputValue("");
-      setTimeout(() => {
-        let botResponse = "Respuesta del chatbot";
+      setLoading(true);
 
-        if (inputValue.toLowerCase().includes("dengue")) {
-          botResponse =
-            "Recomendaciones para el dengue:\n1. Bebe mucha agua.\n2. Descansa.\n3. Consulta a un médico si los síntomas empeoran.";
-        } else if (inputValue.toLowerCase().includes("muy mal")) {
-          botResponse =
-            "Siento que te sientas así. Aquí tienes algunas recomendaciones:\n1. Mantén la calma.\n2. Si los síntomas son graves, busca ayuda médica inmediata.\n3. Intenta descansar y mantente hidratado.";
-        }
+      try {
+        // Llamar al servicio de Chatbase
+        const response = await sendChatMessage(
+          [...messages.map((msg) => ({ content: msg.text, role: msg.sender === "user" ? "user" : "assistant" })), userMessage]
+        );
 
+        // Agregar la respuesta del bot al estado
         setMessages((prevMessages) => [
           ...prevMessages,
-          {
-            text: botResponse,
-            sender: "bot",
-          },
+          { text: response.text, sender: "bot" },
         ]);
-      }, 1000);
+      } catch (error) {
+        console.error("Error al procesar el mensaje con Chatbase:", error);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { text: "Ocurrió un error. Intenta nuevamente.", sender: "bot" },
+        ]);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -84,9 +95,10 @@ const ChatWindow = () => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Escribe tu mensaje..."
+            disabled={loading}
           />
-          <AntButton type="primary" onClick={handleSend}>
-            Enviar
+          <AntButton type="primary" onClick={handleSend} loading={loading}>
+            {loading ? "Enviando..." : "Enviar"}
           </AntButton>
         </div>
       </Content>

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Avatar, Typography, Row, Col } from "antd";
 import { UserOutlined, RobotOutlined } from "@ant-design/icons";
+import ReactMarkdown from "react-markdown";
+import Markdown from "react-markdown";
 
 const { Text } = Typography;
 
@@ -27,7 +29,10 @@ const Message = ({ text, sender }) => {
             wordWrap: "break-word",
           }}
         >
-          <Text>{text}</Text>
+          {isUser ? (<Text>{text}</Text>)
+          :(<ReactMarkdown>{text}</ReactMarkdown>) 
+          }
+          
         </div>
       </Col>
       {isUser && (

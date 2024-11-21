@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getKeyStorage } from "../storage/session";
+import { message } from "antd";
 
 const token = getKeyStorage("token");
 
@@ -55,3 +56,25 @@ export const remove = async (url) => {
     console.error(error);
   }
 };
+
+export const chatPost = async (message) => {
+  try {
+    const response = await axios.post('https://www.chatbase.co/api/v1/chat',{
+      messages: message,
+      chatbotId: "5Nwj_533NJjNSXTPbp6Sw",
+      stream: false,
+      temperature: 0.1,
+      conversationId: 'denguedeapi'
+    }, {
+      headers: {
+        "Content-Type": 'application/json',
+        'Authorization': 'Bearer 1d1de8c2-48a1-4397-9046-df43456893d2'
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error.response?.data || { message: "Error al realizar la solicitud" };
+  }
+};
+
