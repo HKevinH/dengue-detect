@@ -95,7 +95,7 @@ export const FormRegister = ({ onFinish }) => {
         ]}
       >
         <Select placeholder="Seleccione su estrato">
-          {Array.from({ length: 22 }, (_, i) => (
+          {Array.from({ length: 6 }, (_, i) => (
             <Option key={i + 1} value={`${i + 1}`}>
               {i + 1}
             </Option>
