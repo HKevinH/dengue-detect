@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Form, Input, Button, Select } from "antd";
 
 const { Option } = Select;
@@ -113,7 +113,7 @@ export const FormRegister = ({ onFinish }) => {
           },
         ]}
       >
-        <Input prefix={<UserOutlined />} placeholder="Ej: Juan Pérez"/>
+        <Input prefix={<UserOutlined />} placeholder="Ej: Juan Pérez" />
       </Form.Item>
       <Form.Item
         name="password"
@@ -127,13 +127,52 @@ export const FormRegister = ({ onFinish }) => {
       >
         <Input.Password placeholder="Ej: 123456" />
       </Form.Item>
-      
+
       <Form.Item>
         <Button type="primary" htmlType="submit" block>
           + Registrarse
         </Button>
       </Form.Item>
-      
+    </Form>
+  );
+};
+
+export const FormLogin = ({ onFinish }) => {
+  return (
+    <Form name="login" onFinish={onFinish} layout="vertical">
+      <Form.Item
+        name="email"
+        label="Correo electronico"
+        rules={[
+          {
+            required: true,
+            type: "email",
+            message: "Por favor ingrese un correo válido!",
+          },
+        ]}
+      >
+        <Input
+          prefix={<MailOutlined />}
+          placeholder="Ej: juangomez@gmail.com"
+        />
+      </Form.Item>
+      <Form.Item
+        name="password"
+        label="Contraseña"
+        rules={[
+          {
+            required: true,
+            message: "Por favor ingrese su contraseña!",
+          },
+        ]}
+      >
+        <Input.Password prefix={<LockOutlined />} placeholder="Ej: 123456" />
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" htmlType="submit" block>
+          Iniciar Sesion
+        </Button>
+      </Form.Item>
     </Form>
   );
 };
