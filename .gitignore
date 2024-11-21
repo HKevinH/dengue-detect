@@ -6,3 +6,4 @@ frontend/package-lock.json
 frontend/package-lock.json
 frontend/yarn.lock
 frontend/package-lock.json
+backend/app/core/config.py
