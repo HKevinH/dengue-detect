@@ -1,13 +1,18 @@
 import { Layout, Form, Input, Button, message } from "antd";
 import { useState } from "react";
+import useUsers from "../../hooks/useUsers";
 
 export const Settings = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
+  const {currentSession} = useUsers()
+  console.log(currentSession)
+
+
   const user = {
-    username: "juanperez123",
-    email: "juan.perez@example.com",
+    name: currentSession.name ?? "sin usuario",
+    email: currentSession.email ?? "sin email",
   };
 
   const onFinish = (values) => {
@@ -28,14 +33,14 @@ export const Settings = () => {
         form={form}
         layout="vertical"
         initialValues={{
-          username: user.username,
+          name: user.name,
           email: user.email,
         }}
         onFinish={onFinish}
       >
         <Form.Item
           label="Nombre de usuario"
-          name="username"
+          name="name"
           rules={[
             {
               required: true,
