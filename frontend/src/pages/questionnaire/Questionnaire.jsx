@@ -332,7 +332,10 @@ export const Questionnaire = () => {
 
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 {currentStep > 0 && (
-                  <Button onClick={prevStep} style={{ width: "45%" }}>
+                  <Button
+                    onClick={prevStep}
+                    style={{ width: "45%", marginRight: "10px" }}
+                  >
                     Anterior
                   </Button>
                 )}
