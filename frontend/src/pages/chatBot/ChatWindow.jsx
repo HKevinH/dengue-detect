@@ -22,6 +22,7 @@ const ChatWindow = () => {
     if (inputValue.trim()) {
       const userMessage = { content: inputValue, role: "user" };
 
+      // Agregar el mensaje del usuario al estado
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: inputValue, sender: "user" },
@@ -30,6 +31,7 @@ const ChatWindow = () => {
       setLoading(true);
 
       try {
+        // Llamar al servicio de Chatbase
         const response = await sendChatMessage([
           ...messages.map((msg) => ({
             content: msg.text,
@@ -38,6 +40,7 @@ const ChatWindow = () => {
           userMessage,
         ]);
 
+        // Agregar la respuesta del bot al estado
         setMessages((prevMessages) => [
           ...prevMessages,
           { text: response.text, sender: "bot" },

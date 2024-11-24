@@ -14,8 +14,8 @@ const UserPanelTemplate = () => {
   return (
     <Layout
       style={{
-        paddingTop: "4px",
-        minHeight: window.innerHeight * 0.97,
+        paddingTop: "2px",
+        minHeight: window.innerHeight * 0.98,
         overflowY: "hidden",
       }}
     >
@@ -33,7 +33,7 @@ const UserPanelTemplate = () => {
 
         <Content
           style={{
-            padding: "10px",
+            padding: "40px",
             overflowX: "hidden",
             overflowY: "auto",
           }}

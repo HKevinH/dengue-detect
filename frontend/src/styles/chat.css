@@ -7,6 +7,7 @@
 .chat-title {
     text-align: center;
     color: #000;
+    margin-top: 40px;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -17,9 +18,10 @@
     flex-direction: column;
     height: 100%;
     margin-right: 20px;
+    position: relative;
     /* background-color: #1890ff; */
     width: 70%;
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: 10px;
     overflow: hidden;
 }

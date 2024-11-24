@@ -6,16 +6,18 @@ import {
 } from "@ant-design/icons";
 import useUsers from "../../hooks/useUsers";
 import "../../styles/avatar.css";
-
+import { useNavigate } from "react-router-dom";
 const { Title } = Typography;
 
 const UserAvatar = () => {
   const { currentSession } = useUsers();
+  const navigate = useNavigate();
   const handleMenuClick = (e) => {
     if (e.key === "logout") {
       message.success("Sesión cerrada correctamente");
     } else if (e.key === "settings") {
       message.info("Navegar a configuración");
+      navigate("/panel/settings");
     }
   };
 

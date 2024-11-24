@@ -6,11 +6,11 @@ const ChatPage = () => {
       className="layout-container-chat"
       style={{
         padding: "20px",
-        height: window.innerHeight * 0.95,
+        height: window.innerHeight * 0.92,
         width: window.innerWidth * 0.85,
       }}
     >
-      <ChatWindow />;
+      <ChatWindow />
     </Layout>
   );
 };

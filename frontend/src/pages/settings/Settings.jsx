@@ -6,19 +6,17 @@ export const Settings = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
-  const {currentSession} = useUsers()
-  console.log(currentSession)
-
+  const { currentSession } = useUsers();
+  console.log(currentSession);
 
   const user = {
-    name: currentSession.name ?? "sin usuario",
-    email: currentSession.email ?? "sin email",
+    name: currentSession?.name ?? "sin usuario",
+    email: currentSession?.email ?? "sin email",
   };
 
   const onFinish = (values) => {
     setLoading(true);
     console.log("Datos enviados: ", values);
-    // Simulando una llamada a API
     setTimeout(() => {
       message.success("Configuraciones actualizadas exitosamente.");
       setLoading(false);
@@ -26,7 +24,7 @@ export const Settings = () => {
   };
 
   return (
-    <Layout style={{ padding: "24px" }}>
+    <Layout>
       <h1>Configuraciones de la cuenta</h1>
 
       <Form
