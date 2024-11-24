@@ -1,15 +1,25 @@
 import { Layout, Row, Col, Button, Card, Menu } from "antd";
 import { useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
-import MapComponent from "../../components/organisms/MapComponent";
 import "../../styles/zones.css";
+import MapWithGeoJSON from "../../components/organisms/MapWithGeoJSON";
 
 const { Content } = Layout;
 export const Zones = () => {
   const [showCard, setShowCard] = useState(false);
+  const [selectedRisk, setSelectedRisk] = useState(0);
 
   const toggleCard = () => {
     setShowCard(!showCard);
+  };
+
+  const handleMenuClick = ({ key }) => {
+    setSelectedRisk(key);
+  };
+  const riskLabels = {
+    1: "Alto Riesgo",
+    2: "Medio Riesgo",
+    3: "Bajo Riesgo",
   };
 
   return (
@@ -17,7 +27,7 @@ export const Zones = () => {
       <Content style={{ backgroundColor: "#fff" }}>
         <Row style={{ position: "relative" }}>
           <Col span={24}>
-            <MapComponent />
+            <MapWithGeoJSON selectedRisk={selectedRisk} />
 
             <Button
               type="primary"
@@ -46,6 +56,7 @@ export const Zones = () => {
                 <Menu
                   mode="vertical"
                   className="floating-menu"
+                  onClick={handleMenuClick}
                   defaultSelectedKeys={["1"]}
                 >
                   <Menu.Item key="1">Zonas con Alto Riesgo</Menu.Item>
