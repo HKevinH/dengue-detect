@@ -23,7 +23,7 @@ const NewsCard = ({ title, description, date, image, url }) => (
       overflow: "hidden",
       backgroundColor: "#001529",
       color: "white",
-      height: "450px",
+      height: "460px",
     }}
     bodyStyle={{ padding: "16px", display: "flex", flexDirection: "column" }}
   >
@@ -31,7 +31,12 @@ const NewsCard = ({ title, description, date, image, url }) => (
       {title}
     </Title>
     <Text style={{ color: "#bfbfbf", display: "block", marginBottom: "8px" }}>
-      {date}
+      {new Date(date).toLocaleDateString("es-CO", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}
     </Text>
     <div
       style={{
@@ -49,7 +54,12 @@ const NewsCard = ({ title, description, date, image, url }) => (
     </div>
     <Button
       type="link"
-      style={{ color: "#40a9ff", padding: 0, marginTop: "10px" }}
+      style={{
+        color: "#40a9ff",
+        padding: 0,
+        marginTop: "10px",
+        paddingBottom: "20px",
+      }}
     >
       <a href={url} target="_blank" rel="noopener noreferrer">
         Leer más
