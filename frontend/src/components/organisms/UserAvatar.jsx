@@ -15,6 +15,7 @@ const UserAvatar = () => {
   const handleMenuClick = (e) => {
     if (e.key === "logout") {
       message.success("Sesión cerrada correctamente");
+      navigate("/login");
     } else if (e.key === "settings") {
       message.info("Navegar a configuración");
       navigate("/panel/settings");

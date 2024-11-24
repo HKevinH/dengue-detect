@@ -51,7 +51,12 @@ const useUsers = () => {
     setMessage("");
   }, []);
 
-  return { register, message, currentSession, login, clearMessage };
+  const logout = useCallback(() => {
+    setCurrentSession(null);
+    setKeyStorage("token", "");
+  }, []);
+
+  return { register, message, currentSession, login, clearMessage, logout };
 };
 
 export default useUsers;

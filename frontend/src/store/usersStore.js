@@ -5,4 +5,5 @@ export const useUsersStore = create((set) => ({
   currentSession: null,
   setUsers: (users) => set({ users }),
   setCurrentSession: (currentSession) => set({ currentSession }),
+  logout: () => set({ currentSession: null }),
 }));
