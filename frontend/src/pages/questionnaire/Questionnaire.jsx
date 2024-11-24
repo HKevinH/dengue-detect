@@ -14,9 +14,11 @@ import dayjs from "dayjs";
 import { useQuestions } from "../../hooks/useQuestions";
 import { ConfettiComponent } from "../../components/atoms/Confetti";
 const { Title } = Typography;
+import { useNavigate } from "react-router-dom";
 
 export const Questionnaire = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const { sendQuestion, responseLabel } = useQuestions();
@@ -383,7 +385,13 @@ export const Questionnaire = () => {
               ¡Lo sentimos, pero parece que tienes síntomas de dengue!
             </Title>
 
-            <Button type="primary" onClick={() => setSubmitted(false)}>
+            <Button
+              type="primary"
+              onClick={() => {
+                navigate("/panel/chat");
+                setSubmitted(false);
+              }}
+            >
               Ir a el bot de ayuda
             </Button>
           </Modal>
