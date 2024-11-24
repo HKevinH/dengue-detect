@@ -20,8 +20,9 @@ const menus = [
   {
     key: "1",
     icon: <HomeOutlined />,
-    text: "Dashboard",
-    description: "Aquí puedes ver el resumen general de la plataforma.",
+    text: "Noticias",
+    description:
+      "Aquí puedes ver noticias sobre el dengue y otros datos importantes.",
     navigate: "/panel/dashboard",
   },
   {

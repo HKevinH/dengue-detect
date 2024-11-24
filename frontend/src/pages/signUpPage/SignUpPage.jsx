@@ -30,7 +30,7 @@ const SignUpPage = ({ login }) => {
 
   useEffect(() => {
     if (currentSession) {
-      navigate("/panel");
+      navigate("/panel/dashboard");
     }
   }, [currentSession, navigate]);
 
