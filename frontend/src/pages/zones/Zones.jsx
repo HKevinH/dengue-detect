@@ -1,12 +1,10 @@
-import { Layout, Row, Col, Typography, Button, Card, Menu } from "antd";
+import { Layout, Row, Col, Button, Card, Menu } from "antd";
 import { useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import MapComponent from "../../components/organisms/MapComponent";
 import "../../styles/zones.css";
 
-const { Header, Content } = Layout;
-const { Title, Text } = Typography;
-
+const { Content } = Layout;
 export const Zones = () => {
   const [showCard, setShowCard] = useState(false);
 
