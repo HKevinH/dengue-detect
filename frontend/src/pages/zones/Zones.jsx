@@ -16,11 +16,6 @@ export const Zones = () => {
   const handleMenuClick = ({ key }) => {
     setSelectedRisk(key);
   };
-  const riskLabels = {
-    1: "Alto Riesgo",
-    2: "Medio Riesgo",
-    3: "Bajo Riesgo",
-  };
 
   return (
     <Layout className="container-map-zone">
