@@ -283,7 +283,14 @@ export const Questionnaire = () => {
 
   return (
     <Layout
-      style={{ padding: "24px", backgroundColor: "#f0f2f5", marginTop: "50px" }}
+      style={{
+        backgroundColor: "#f0f2f5",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "center",
+        height: window.innerHeight * 0.89,
+      }}
     >
       <Card
         className="questionnaire-card"
