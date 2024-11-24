@@ -1,6 +1,5 @@
-import { Avatar, Layout } from "antd";
+import { Layout } from "antd";
 
-import PanelText from "../atoms/PanelText";
 import { Sidebar } from "../organisms/Sidebar";
 import { Outlet } from "react-router";
 import { useState } from "react";
