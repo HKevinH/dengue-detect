@@ -6,8 +6,9 @@ export const Dashboard = () => {
   return (
     <Layout
       style={{
-        overflow: "hidden",
-        backgroundColor: "#f0f2f5",
+        height: window.innerHeight * 0.89,
+
+        // backgroundColor: "#f0f2f5",
       }}
     >
       <Title level={2} style={{ textAlign: "center", color: "#1890ff" }}>

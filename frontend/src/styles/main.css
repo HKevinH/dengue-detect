@@ -27,3 +27,18 @@
 ::-webkit-scrollbar-thumb:active {
     background: #111827;
 }
+
+html,
+body {
+    overflow: hidden;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.content-container {
+    padding: 40px;
+    margin: 30px;
+    overflow-y: auto;
+    height: 95%;
+    box-sizing: border-box;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Circle, Popup } from "react-leaflet";
 
 const CityMarkers = ({ cities }) => {

@@ -16,13 +16,13 @@ const UserPanelTemplate = () => {
       style={{
         paddingTop: "2px",
         minHeight: window.innerHeight * 0.98,
-        overflowY: "hidden",
       }}
     >
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
       <Layout
         style={{
+          flexGrow: 1,
           marginLeft: collapsed ? "100px" : "250px",
           transition: "margin-left 0.3s ease",
         }}
@@ -31,13 +31,7 @@ const UserPanelTemplate = () => {
           <UserAvatar />
         </Header>
 
-        <Content
-          style={{
-            padding: "40px",
-            overflowX: "hidden",
-            overflowY: "auto",
-          }}
-        >
+        <Content className="content-container">
           <Outlet />
         </Content>
       </Layout>
