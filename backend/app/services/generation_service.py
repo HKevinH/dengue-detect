@@ -1,4 +1,23 @@
-# app/services/generation_service.py
+"""
+# Servicio de Generación de Muestras
+
+Este archivo define las funciones para preprocesar datos de entrada y generar muestras sintéticas utilizando un modelo Condicional Variacional Autoencoder (CVAE). El servicio se integra con modelos preentrenados y codificadores previamente cargados.
+
+## Funciones principales:
+1. **`preprocess_input`**:
+   - Convierte los datos de entrada del usuario en un formato adecuado para el modelo.
+   - Codifica columnas categóricas utilizando un codificador One-Hot.
+   - Combina columnas sintomáticas y categóricas codificadas en un único DataFrame.
+
+2. **`generate_samples`**:
+   - Utiliza el modelo CVAE para generar muestras sintéticas basadas en los datos preprocesados.
+   - Las muestras generadas están condicionadas a una etiqueta de clase específica.
+   - Devuelve las muestras generadas en formato de lista de diccionarios.
+
+## Cómo extender:
+- Agregar validaciones adicionales para los datos de entrada.
+- Incluir nuevas funcionalidades, como generar múltiples configuraciones de muestras en una sola ejecución.
+"""
 
 import pandas as pd
 import torch
@@ -8,6 +27,17 @@ from app.models.patien import symptom_columns, categorical_columns  # Importar c
 def preprocess_input(data):
     """
     Preprocesa la entrada de datos del usuario convirtiéndola a un formato adecuado para el modelo.
+
+    ### Parámetros:
+    - **`data`**: Objeto de datos del usuario, compatible con `BaseModel` de Pydantic.
+
+    ### Proceso:
+    - Convierte los datos del usuario en un DataFrame.
+    - Codifica columnas categóricas utilizando un codificador One-Hot.
+    - Combina las columnas sintomáticas con las categóricas codificadas.
+
+    ### Retorno:
+    - DataFrame preprocesado con las columnas necesarias para el modelo CVAE.
     """
     # Convierte los datos del usuario en un DataFrame
     input_df = pd.DataFrame([data.dict()])
@@ -27,11 +57,32 @@ def preprocess_input(data):
 def generate_samples(data, class_label, num_samples):
     """
     Genera muestras usando el modelo CVAE basado en la entrada de datos y una etiqueta de clase específica.
+
+    ### Parámetros:
+    - **`data`**: Objeto de datos del usuario, compatible con `BaseModel` de Pydantic.
+    - **`class_label`**: Etiqueta de clase para condicionar la generación de muestras.
+    - **`num_samples`**: Número de muestras a generar.
+
+    ### Proceso:
+    - Preprocesa los datos para obtener el formato necesario.
+    - Genera un espacio latente aleatorio y lo decodifica con el modelo CVAE.
+    - Convierte las columnas sintomáticas a valores binarios (0 o 1).
+
+    ### Validaciones:
+    - Verifica que el tamaño de `y_new` coincida con el número de muestras.
+    - Comprueba que el número de columnas en la salida del modelo coincida con las columnas de entrada.
+
+    ### Retorno:
+    - Lista de diccionarios con las muestras generadas.
+
+    ### Excepciones:
+    - Lanza `ValueError` si hay inconsistencias en las dimensiones de entrada o salida.
     """
     # Preprocesa la entrada para obtener el formato final necesario
     input_final = preprocess_input(data)
     input_tensor = torch.tensor(input_final.values, dtype=torch.float32)
 
+    # Genera espacio latente aleatorio
     z = torch.randn(num_samples, cvae.latent_dim)  # Dimensión `(num_samples, latent_dim)`
     y_new = torch.tensor([class_label] * num_samples)  # Dimensión `(num_samples,)`
 
