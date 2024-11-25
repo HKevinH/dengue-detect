@@ -1,15 +1,30 @@
-fastapi
-uvicorn
-pydantic
-sqlalchemy
-aiomysql
-PyJWT
-passlib
-email-validator
-bcrypt
-pytest
-torch
-pandas
-joblib
-cryptography
-scikit-learn
+fastapi            
+# Framework web moderno y de alto rendimiento para construir APIs utilizando Python.
+uvicorn            
+# Servidor ASGI rápido y liviano, ideal para ejecutar aplicaciones FastAPI.
+pydantic           
+# Biblioteca para validación de datos y manejo de tipos estrictos, esencial para FastAPI.
+sqlalchemy         
+# ORM (Object Relational Mapper) para interactuar con bases de datos SQL.
+aiomysql           
+# Cliente MySQL asincrónico para manejar bases de datos en aplicaciones basadas en ASGI.
+PyJWT              
+# Manejo de JSON Web Tokens (JWT) para autenticación y autorización.
+passlib            
+# Herramienta para hash y verificación de contraseñas, compatible con múltiples algoritmos.
+email-validator    
+# Valida direcciones de correo electrónico para garantizar entradas correctas.
+bcrypt             
+# Algoritmo de hash seguro para proteger contraseñas.
+pytest            
+# Framework de pruebas para escribir y ejecutar pruebas automatizadas en Python.
+torch             
+# Biblioteca de aprendizaje profundo utilizada para tareas de machine learning.
+pandas            
+# Herramienta para manipulación y análisis de datos tabulares.
+joblib            
+# Manejo eficiente de tareas paralelas y serialización de objetos.
+cryptography      
+# Biblioteca para implementar protocolos de cifrado y manejar claves.
+scikit-learn      
+# Conjunto de herramientas para machine learning, incluye algoritmos de clasificación, regresión y clustering.
